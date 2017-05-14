@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="前言前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。 Paxos算法简介Paxos算法由Lamport于1990年提出，它是一种基于消息传递且具有高度容错特性的一">
+<meta name="description" content="前言前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。">
 <meta name="keywords" content="Algorithm,Distributed Computing,Paxos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Paxos算法学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/04/30/Paxos算法学习笔记/index.html">
 <meta property="og:site_name" content="Zia's Blog">
-<meta property="og:description" content="前言前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。 Paxos算法简介Paxos算法由Lamport于1990年提出，它是一种基于消息传递且具有高度容错特性的一">
-<meta property="og:updated_time" content="2017-04-30T14:09:51.726Z">
+<meta property="og:description" content="前言前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。">
+<meta property="og:updated_time" content="2017-05-14T10:06:12.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Paxos算法学习笔记">
-<meta name="twitter:description" content="前言前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。 Paxos算法简介Paxos算法由Lamport于1990年提出，它是一种基于消息传递且具有高度容错特性的一">
+<meta name="twitter:description" content="前言前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。">
 
 
 
@@ -381,7 +381,7 @@
 
       
         <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间实习，是做一个分布式的数据库系统，当然只是拿开源的分布式系统来使用一下。那时候，简单看了下分布式的基础算法——Paxos算法。最近看书又遇到了，打算好好学习一下，但是发现书上讲的好难懂，于是上网找，发现了土豆上李海磊老师讲解Paxos的视频，讲得很到位，这里记录一下主要内容。<br><a id="more"></a></p>
 <h1 id="Paxos算法"><a href="#Paxos算法" class="headerlink" title="Paxos算法"></a>Paxos算法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Paxos算法由Lamport于1990年提出，它是一种基于消息传递且具有高度容错特性的一致性算法。Paxos算法用来确定一个不可变变量的取值，它可以是任意取值，且一旦取值确定，就不再更改，且可被获取。在分布式系统中，可以把它理解为协商一个一致的数据操作序列。这在分布式系统中很重要，因为分布式系统的数据通常有多个副本。如何通过协调，让多个副本执行相同的操作序列，进而保证数据一致性，是分布式系统要解决的基本问题。</p>
 <h2 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h2><p>可以把Paxos算法要解决的问题定义为：设计一个系统来存储名为var的取值，这个系统由acceptor来接收var值，由proposer发出var值。系统需要保证var的取值具有一致性，并需要保证具有容错性。这里不考虑acceptor故障丢失var信息问题和<a href="https://zh.wikipedia.org/zh/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98" target="_blank" rel="external">拜占庭将军问题</a>。<br>解决这个问题，关键在以下四个方面：</p>
 <blockquote>

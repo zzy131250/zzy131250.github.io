@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/40651617.jpg">
 <meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/39654857.jpg">
 <meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/41296515.jpg">
-<meta property="og:updated_time" content="2017-07-01T13:25:18.868Z">
+<meta property="og:updated_time" content="2017-07-01T14:31:41.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO复用">
 <meta name="twitter:description" content="前言阻塞、非阻塞、同步、异步，这些IO名词经常听到，但是很容易混淆，这里记录一下他们的区别与联系。 IO模型概览上述词语都和IO编程相关，我们先来了解一下IO模型。依据《UNIX网络编程》的说法，IO模型共分为五种，分别为：  阻塞IO 非阻塞IO IO复用 信号驱动IO 异步IO  下面分别简单介绍之。 阻塞IO模型这是最基本的IO模型，进程通过recvfrom系统调用向内核请求数据，在内核准">
@@ -410,6 +410,7 @@
 <li>异步IO操作不引起请求进程阻塞</li>
 </ul>
 <p>根据上面的定义，前四种模型都是同步模型，而异步IO模型属于异步模型。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>同步、异步的区别是返回结果的方式：同步是直接返回结果；异步是通过通知、回调等方式返回结果。<br>阻塞、非阻塞的区别是进程等待结果时的状态：阻塞是进程挂起等待；非阻塞是进程继续执行，不挂起，并通过轮询方式获取结果的状态。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://book.douban.com/subject/1500149/" target="_blank" rel="external">UNIX网络编程</a></p>
 <hr>
 <blockquote>
@@ -659,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型概览"><span class="nav-number">2.</span> <span class="nav-text">IO模型概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞IO模型"><span class="nav-number">2.1.</span> <span class="nav-text">阻塞IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非阻塞IO模型"><span class="nav-number">2.2.</span> <span class="nav-text">非阻塞IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO复用模型"><span class="nav-number">2.3.</span> <span class="nav-text">IO复用模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号驱动IO模型"><span class="nav-number">2.4.</span> <span class="nav-text">信号驱动IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步IO模型"><span class="nav-number">2.5.</span> <span class="nav-text">异步IO模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型比较"><span class="nav-number">3.</span> <span class="nav-text">IO模型比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同步IO与异步IO"><span class="nav-number">4.</span> <span class="nav-text">同步IO与异步IO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型概览"><span class="nav-number">2.</span> <span class="nav-text">IO模型概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞IO模型"><span class="nav-number">2.1.</span> <span class="nav-text">阻塞IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非阻塞IO模型"><span class="nav-number">2.2.</span> <span class="nav-text">非阻塞IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO复用模型"><span class="nav-number">2.3.</span> <span class="nav-text">IO复用模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号驱动IO模型"><span class="nav-number">2.4.</span> <span class="nav-text">信号驱动IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步IO模型"><span class="nav-number">2.5.</span> <span class="nav-text">异步IO模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型比较"><span class="nav-number">3.</span> <span class="nav-text">IO模型比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同步IO与异步IO"><span class="nav-number">4.</span> <span class="nav-text">同步IO与异步IO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

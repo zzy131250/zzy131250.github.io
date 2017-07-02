@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="IO,Asynchronous," />
+  <meta name="keywords" content="Python,Library," />
 
 
 
@@ -87,24 +87,17 @@
 
 
 
-<meta name="description" content="前言阻塞、非阻塞、同步、异步，这些IO名词经常听到，但是很容易混淆，这里记录一下他们的区别与联系。 IO模型概览上述词语都和IO编程相关，我们先来了解一下IO模型。依据《UNIX网络编程》的说法，IO模型共分为五种，分别为：  阻塞IO 非阻塞IO IO复用 信号驱动IO 异步IO  下面分别简单介绍之。 阻塞IO模型这是最基本的IO模型，进程通过recvfrom系统调用向内核请求数据，在内核准">
-<meta name="keywords" content="IO,Asynchronous">
+<meta name="description" content="前言工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。 requests易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。使用手册 beautifulsoup好用的HTML解析工具。使用手册 dateutil日期处理工具，令人激动的是，它可以自动识别多种字符串，如”2">
+<meta name="keywords" content="Python,Library">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IO复用">
-<meta property="og:url" content="http://yoursite.com/2017/07/01/IO复用/index.html">
+<meta property="og:title" content="Python库推荐">
+<meta property="og:url" content="http://yoursite.com/2017/07/02/Python库推荐/index.html">
 <meta property="og:site_name" content="Zia's Blog">
-<meta property="og:description" content="前言阻塞、非阻塞、同步、异步，这些IO名词经常听到，但是很容易混淆，这里记录一下他们的区别与联系。 IO模型概览上述词语都和IO编程相关，我们先来了解一下IO模型。依据《UNIX网络编程》的说法，IO模型共分为五种，分别为：  阻塞IO 非阻塞IO IO复用 信号驱动IO 异步IO  下面分别简单介绍之。 阻塞IO模型这是最基本的IO模型，进程通过recvfrom系统调用向内核请求数据，在内核准">
-<meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/34247912.jpg">
-<meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/91391093.jpg">
-<meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/23851022.jpg">
-<meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/40651617.jpg">
-<meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/39654857.jpg">
-<meta property="og:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/41296515.jpg">
-<meta property="og:updated_time" content="2017-07-01T14:47:46.934Z">
+<meta property="og:description" content="前言工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。 requests易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。使用手册 beautifulsoup好用的HTML解析工具。使用手册 dateutil日期处理工具，令人激动的是，它可以自动识别多种字符串，如”2">
+<meta property="og:updated_time" content="2017-07-02T09:01:35.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IO复用">
-<meta name="twitter:description" content="前言阻塞、非阻塞、同步、异步，这些IO名词经常听到，但是很容易混淆，这里记录一下他们的区别与联系。 IO模型概览上述词语都和IO编程相关，我们先来了解一下IO模型。依据《UNIX网络编程》的说法，IO模型共分为五种，分别为：  阻塞IO 非阻塞IO IO复用 信号驱动IO 异步IO  下面分别简单介绍之。 阻塞IO模型这是最基本的IO模型，进程通过recvfrom系统调用向内核请求数据，在内核准">
-<meta name="twitter:image" content="http://osbdeld5c.bkt.clouddn.com/17-6-30/34247912.jpg">
+<meta name="twitter:title" content="Python库推荐">
+<meta name="twitter:description" content="前言工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。 requests易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。使用手册 beautifulsoup好用的HTML解析工具。使用手册 dateutil日期处理工具，令人激动的是，它可以自动识别多种字符串，如”2">
 
 
 
@@ -132,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/01/IO复用/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/02/Python库推荐/"/>
 
 
 
 
 
-  <title> IO复用 | Zia's Blog </title>
+  <title> Python库推荐 | Zia's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/IO复用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/02/Python库推荐/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zia Chou">
@@ -298,7 +291,7 @@
             
             
               
-                IO复用
+                Python库推荐
               
             
           </h1>
@@ -313,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T00:00:00+08:00">
-                2017-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
+                2017-07-02
               </time>
             
 
@@ -354,9 +347,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/01/IO复用/#comments" itemprop="discussionUrl">
+                <a href="/2017/07/02/Python库推荐/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/01/IO复用/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/07/02/Python库推荐/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -388,30 +381,12 @@
 
       
         <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>阻塞、非阻塞、同步、异步，这些IO名词经常听到，但是很容易混淆，这里记录一下他们的区别与联系。</p>
-<h1 id="IO模型概览"><a href="#IO模型概览" class="headerlink" title="IO模型概览"></a>IO模型概览</h1><p>上述词语都和IO编程相关，我们先来了解一下IO模型。依据《UNIX网络编程》的说法，IO模型共分为五种，分别为：</p>
-<ul>
-<li>阻塞IO</li>
-<li>非阻塞IO</li>
-<li>IO复用</li>
-<li>信号驱动IO</li>
-<li>异步IO</li>
-</ul>
-<p>下面分别简单介绍之。</p>
-<h2 id="阻塞IO模型"><a href="#阻塞IO模型" class="headerlink" title="阻塞IO模型"></a>阻塞IO模型</h2><p>这是最基本的IO模型，进程通过recvfrom系统调用向内核请求数据，在内核准备好数据并返回给进程之前，进程一直阻塞等待。<br><img src="http://osbdeld5c.bkt.clouddn.com/17-6-30/34247912.jpg" alt=""></p>
-<h2 id="非阻塞IO模型"><a href="#非阻塞IO模型" class="headerlink" title="非阻塞IO模型"></a>非阻塞IO模型</h2><p>在非阻塞IO模型中，进程不是被动等待数据返回，而是每隔一段时间就使用recvfrom系统调用询问（轮询）内核数据是否准备好。若还未准备好，则内核会返回一个EWOULDBLOCK错误；若准备好，则进程执行recvfrom系统调用。<br><img src="http://osbdeld5c.bkt.clouddn.com/17-6-30/91391093.jpg" alt=""></p>
-<h2 id="IO复用模型"><a href="#IO复用模型" class="headerlink" title="IO复用模型"></a>IO复用模型</h2><p>在IO复用模型中，多个进程可以同时请求数据并阻塞，使用select或poll系统调用，由select或poll代为请求内核的系统调用。当某个进程的数据准备好之后，即通知该进程执行recvfrom系统调用，其他进程继续等待。<br><img src="http://osbdeld5c.bkt.clouddn.com/17-6-30/23851022.jpg" alt=""></p>
-<h2 id="信号驱动IO模型"><a href="#信号驱动IO模型" class="headerlink" title="信号驱动IO模型"></a>信号驱动IO模型</h2><p>通过系统调用sigaction，为进程安装一个信号处理程序，进程可以非阻塞地继续执行。当数据准备好，内核为进程生成一个信号，通知进程，然后进程执行recvfrom系统调用。<br><img src="http://osbdeld5c.bkt.clouddn.com/17-6-30/40651617.jpg" alt=""></p>
-<h2 id="异步IO模型"><a href="#异步IO模型" class="headerlink" title="异步IO模型"></a>异步IO模型</h2><p>异步IO与信号驱动IO类似，都是由内核通知进程，但是区别在于：信号驱动IO是由内核通知进程何时可以启动一个IO操作，而异步IO是由内核通知进程IO操作何时完成。<br><img src="http://osbdeld5c.bkt.clouddn.com/17-6-30/39654857.jpg" alt=""></p>
-<h1 id="IO模型比较"><a href="#IO模型比较" class="headerlink" title="IO模型比较"></a>IO模型比较</h1><p>前四种IO模型的主要区别都在第一阶段，而第二阶段，在数据从内核拷贝到用户空间时，都是阻塞于recvfrom调用；异步IO的两个阶段都不同于前四种模型。<br><img src="http://osbdeld5c.bkt.clouddn.com/17-6-30/41296515.jpg" alt=""></p>
-<h1 id="同步IO与异步IO"><a href="#同步IO与异步IO" class="headerlink" title="同步IO与异步IO"></a>同步IO与异步IO</h1><p>Posix.1定义：</p>
-<ul>
-<li>同步IO操作引起请求进程阻塞，直至IO操作完成</li>
-<li>异步IO操作不引起请求进程阻塞</li>
-</ul>
-<p>根据上面的定义，前四种模型都是同步模型，而异步IO模型属于异步模型。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>同步、异步的区别是返回结果的方式：同步是直接返回结果；异步是通过通知、回调等方式返回结果。<br>阻塞、非阻塞都描述同步IO模型，他们的区别是进程等待结果时的状态：阻塞是进程挂起等待；非阻塞是进程继续执行，不挂起，并进行轮询。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://book.douban.com/subject/1500149/" target="_blank" rel="external">UNIX网络编程</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。</p>
+<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a><a href="https://pypi.python.org/pypi/requests" target="_blank" rel="external">requests</a></h1><p>易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。<br><a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="external">使用手册</a></p>
+<h1 id="beautifulsoup"><a href="#beautifulsoup" class="headerlink" title="beautifulsoup"></a><a href="https://pypi.python.org/pypi/BeautifulSoup" target="_blank" rel="external">beautifulsoup</a></h1><p>好用的HTML解析工具。<br><a href="http://beautifulsoup.readthedocs.io/zh_CN/latest/" target="_blank" rel="external">使用手册</a></p>
+<h1 id="dateutil"><a href="#dateutil" class="headerlink" title="dateutil"></a><a href="https://pypi.python.org/pypi/python-dateutil" target="_blank" rel="external">dateutil</a></h1><p>日期处理工具，令人激动的是，它可以自动识别多种字符串，如”2017-01-01”、”01/01/2017”、”2017.01.01”，并直接转成datetime，很方便！<br><a href="http://dateutil.readthedocs.io/en/latest/" target="_blank" rel="external">使用手册</a></p>
+<h1 id="profile-built-in"><a href="#profile-built-in" class="headerlink" title="profile(built-in)"></a>profile(built-in)</h1><p>这是Python的一个内建函数，可以用于进行性能分析。</p>
+<h1 id="pyenv"><a href="#pyenv" class="headerlink" title="pyenv"></a><a href="https://pypi.python.org/pypi/pyenv/" target="_blank" rel="external">pyenv</a></h1><p>Linux下的Python版本管理神器！简单好用，可以指定某个目录使用的Python版本。<br><a href="https://github.com/pyenv/pyenv/wiki" target="_blank" rel="external">使用手册</a></p>
 <hr>
 <blockquote>
 <p>有问题或建议欢迎在下方评论区讨论。<br>本文为作者原创，转载请注明作者及出处，感激不尽！</p>
@@ -445,9 +420,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/IO/" rel="tag"># IO</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
-            <a href="/tags/Asynchronous/" rel="tag"># Asynchronous</a>
+            <a href="/tags/Library/" rel="tag"># Library</a>
           
         </div>
       
@@ -460,18 +435,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/02/Python库推荐/" rel="next" title="Python库推荐">
-                <i class="fa fa-chevron-left"></i> Python库推荐
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/14/目标遐想/" rel="prev" title="目标遐想">
-                目标遐想 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/01/IO复用/" rel="prev" title="IO复用">
+                IO复用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -664,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型概览"><span class="nav-number">2.</span> <span class="nav-text">IO模型概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞IO模型"><span class="nav-number">2.1.</span> <span class="nav-text">阻塞IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非阻塞IO模型"><span class="nav-number">2.2.</span> <span class="nav-text">非阻塞IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO复用模型"><span class="nav-number">2.3.</span> <span class="nav-text">IO复用模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号驱动IO模型"><span class="nav-number">2.4.</span> <span class="nav-text">信号驱动IO模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步IO模型"><span class="nav-number">2.5.</span> <span class="nav-text">异步IO模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO模型比较"><span class="nav-number">3.</span> <span class="nav-text">IO模型比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同步IO与异步IO"><span class="nav-number">4.</span> <span class="nav-text">同步IO与异步IO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#requests"><span class="nav-number">2.</span> <span class="nav-text">requests</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#beautifulsoup"><span class="nav-number">3.</span> <span class="nav-text">beautifulsoup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dateutil"><span class="nav-number">4.</span> <span class="nav-text">dateutil</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#profile-built-in"><span class="nav-number">5.</span> <span class="nav-text">profile(built-in)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyenv"><span class="nav-number">6.</span> <span class="nav-text">pyenv</span></a></li></ol></div>
             
 
           </div>
@@ -830,9 +801,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/07/01/IO复用/';
-          this.page.identifier = '2017/07/01/IO复用/';
-          this.page.title = 'IO复用';
+          this.page.url = 'http://yoursite.com/2017/07/02/Python库推荐/';
+          this.page.identifier = '2017/07/02/Python库推荐/';
+          this.page.title = 'Python库推荐';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zias-blog.disqus.com/embed.js';

@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/13/记一次异常数据过滤算法的优化/index.html">
 <meta property="og:site_name" content="Zia's Blog">
 <meta property="og:description" content="这段时间公司给了个新的需求：对现有的小区均价异常数据过滤算法进行优化，因为现在的过滤算法过滤了大量正常数据，导致均价变化幅度很大，引起客户的怀疑。 算法目标过滤算法的目标是过滤小区房子的错误数据。由于我们的数据来源是中介网站，可以认为错误数据不会很多。另外，如果有错误数据，也认为这是很容易辨识出来的数据。 过滤算法 V1.0现有的过滤算法的基本思想是计算幅度。先将小区中房子的成交价按照时间排序，">
-<meta property="og:updated_time" content="2017-07-13T14:49:59.363Z">
+<meta property="og:updated_time" content="2017-07-13T15:04:10.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次异常数据过滤算法的优化">
 <meta name="twitter:description" content="这段时间公司给了个新的需求：对现有的小区均价异常数据过滤算法进行优化，因为现在的过滤算法过滤了大量正常数据，导致均价变化幅度很大，引起客户的怀疑。 算法目标过滤算法的目标是过滤小区房子的错误数据。由于我们的数据来源是中介网站，可以认为错误数据不会很多。另外，如果有错误数据，也认为这是很容易辨识出来的数据。 过滤算法 V1.0现有的过滤算法的基本思想是计算幅度。先将小区中房子的成交价按照时间排序，">
@@ -381,6 +381,7 @@
 <li>通过价格聚类，将小区价格分类</li>
 <li>对每个类，计算数据与类中心的距离（拉依达准则）决定是否过滤</li>
 </ol>
+<p>目前，这个算法取得了最好的效果，符合过滤的预期。当然，还是有改进的余地，如果大家有什么好的建议，请不吝赐教！</p>
 <hr>
 <blockquote>
 <p>本<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">作品</span>由<span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Zia Chou</span>采用<a rel="external" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>

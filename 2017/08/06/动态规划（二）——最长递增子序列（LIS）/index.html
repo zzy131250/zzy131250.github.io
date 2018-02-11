@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.ziazhou.com/2017/08/06/动态规划（二）——最长递增子序列（LIS）/index.html">
 <meta property="og:site_name" content="Zia's Blog">
 <meta property="og:description" content="前言在遥远的上一篇，我们介绍了动态规划的第一个问题——背包问题。这篇，我们接着介绍另一个初级问题——最长递增子序列(LIS)。 问题简述给定一个数字序列 $a_1, a_2, \ldots, a_n$ ，求其中最长的递增子序列长度。举个栗子，现在有序列 $2, 3, 5, 4, 1, 6$ ，那么最长递增子序列就是 $2, 3, 5, 6$ 和 $2, 3, 4, 6$ ，长度为4，我们不关注子">
-<meta property="og:updated_time" content="2017-09-07T03:33:17.000Z">
+<meta property="og:updated_time" content="2018-02-11T02:26:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划（二）——最长递增子序列（LIS）">
 <meta name="twitter:description" content="前言在遥远的上一篇，我们介绍了动态规划的第一个问题——背包问题。这篇，我们接着介绍另一个初级问题——最长递增子序列(LIS)。 问题简述给定一个数字序列 $a_1, a_2, \ldots, a_n$ ，求其中最长的递增子序列长度。举个栗子，现在有序列 $2, 3, 5, 4, 1, 6$ ，那么最长递增子序列就是 $2, 3, 5, 6$ 和 $2, 3, 4, 6$ ，长度为4，我们不关注子">
@@ -172,7 +172,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">My code and my thought.</p>
+        <h1 class="site-subtitle" itemprop="description">My code and my thought.</h1>
       
   </div>
 
@@ -287,14 +287,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
             
             
               
                 动态规划（二）——最长递增子序列（LIS）
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -355,6 +355,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -370,15 +400,10 @@
 
       
         <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在遥远的上一篇，我们介绍了动态规划的第一个问题——<a href="http://www.ziachou.com/2017/04/23/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_blank" rel="external">背包问题</a>。这篇，我们接着介绍另一个初级问题——最长递增子序列(LIS)。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在遥远的上一篇，我们介绍了动态规划的第一个问题——<a href="http://www.ziazhou.com/2017/04/23/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">背包问题</a>。这篇，我们接着介绍另一个初级问题——最长递增子序列(LIS)。</p>
 <h1 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h1><p>给定一个数字序列 $a_1, a_2, \ldots, a_n$ ，求其中最长的递增子序列长度。举个栗子，现在有序列 $2, 3, 5, 4, 1, 6$ ，那么最长递增子序列就是 $2, 3, 5, 6$ 和 $2, 3, 4, 6$ ，长度为4，我们不关注子序列的元素在原序列中是否相邻。</p>
 <h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>根据上一篇的经验，要解决动态规划问题，关键是找出状态及状态转移方程。现在，我们循着这个思路，尝试解决。<br>首先是状态，我们可以怎样定义状态呢？首先想到的，是把前i个数字序列的LIS长度d[i]作为状态。找到状态，接着找状态转移方程。假设我们已经找到了d[1]，d[2]，…，d[i]，如何找出d[i+1]呢？我们发现，要确定d[i+1]，需要知道$ a_{i+1} $与前面数字的大小。这就带来一个问题——我们在记录d[i]时，并没有记录d[i]对应的末尾数字，这让我们陷入困境。<br>我们需要更新状态的定义。<br>根据上面的分析，我们把状态d[i]定义为：前i个数字序列，且以$ a_i $作为结尾的LIS长度。那么，d[i+1]就是d[1]，d[2]，…，d[i]中末尾数字小于$ a_{i+1} $的最大值，即$ d[i+1]=max \lbrace d[k] | a_k&lt;a_{i+1}, k \in (1, i) \rbrace $。<br>在给出代码之前，先插播一下我关于使用循环还是递归的一些看法。在上一篇中，我们给出了递归与循环两种方式的实现，但是个人感觉递归更加容易理解一点，因为那里有硬性约束——背包容量，适合用递归自顶向下考虑；而这里，我们没有什么硬性约束，且为了得到一个状态，需要预先知道前面所有的状态值，所以，适合用循环自底向上考虑。<br>下面我们给出代码。</p>
 <h1 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">LIS</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span>[] d = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length+<span class="number">1</span>];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nums.length; i++) &#123;</div><div class="line">    	<span class="comment">// d[i]表示以第i个数字结尾的最长递增子序列长度</span></div><div class="line">    	<span class="keyword">if</span> (i == <span class="number">1</span>) d[i] = <span class="number">1</span>;</div><div class="line">    	<span class="comment">// 遍历d[j]，找出最大的d[j]，且满足第j个数字小于第i个数字</span></div><div class="line">    	<span class="comment">// 这样，d[i]=d[j]+1，否则d[i]=1</span></div><div class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</div><div class="line">    		<span class="keyword">if</span> (nums[j-<span class="number">1</span>] &lt; nums[i-<span class="number">1</span>] &amp;&amp; d[j]+<span class="number">1</span> &gt; d[i]) d[i] = d[j]+<span class="number">1</span>;</div><div class="line">    	&#125;</div><div class="line">    	d[i] = d[i] &gt; <span class="number">1</span> ? d[i] : <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 遍历各个最长递增子序列长度值，返回前index个数字中最长的递增子序列长度</span></div><div class="line">	<span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= index; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (max &lt; d[i]) max = d[i];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> max;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>本<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">作品</span>由<span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Zia Zhou</span>采用<a rel="external" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
-</blockquote>
-
       
     </div>
 
@@ -515,8 +540,8 @@
                alt="Zia Zhou" />
           <p class="site-author-name" itemprop="name">Zia Zhou</p>
            
-              <p class="site-description motion-element" itemprop="description">Permission to be human.</p>
-          
+              <p class="site-description motion-element" itemprop="description"></p>
+           
         </div>
         <nav class="site-state motion-element">
 
@@ -598,6 +623,12 @@
         </div>
 
         
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
         
 
         

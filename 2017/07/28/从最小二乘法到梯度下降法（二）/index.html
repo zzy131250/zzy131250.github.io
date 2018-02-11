@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.ziazhou.com/2017/07/28/从最小二乘法到梯度下降法（二）/index.html">
 <meta property="og:site_name" content="Zia's Blog">
 <meta property="og:description" content="前言上一篇我们介绍了最小二乘法，这是一种数学优化方法，常用于拟合回归。它的基本思想就是通过令参数的偏导数为0，计算残差平方和的最小值。但是这种方法有一定的局限性，就是不适合使用计算机进行计算，因为计算机不会解方程。那么，有没有方便计算机进行计算的方法呢？答案当然是有的。计算机虽然不会解方程，但是它可以通过自己强大的计算能力，把最终答案一步一步试出来。这就是梯度下降法。 线性回归的例子还是上一篇的">
-<meta property="og:updated_time" content="2017-09-07T03:33:28.000Z">
+<meta property="og:updated_time" content="2018-02-11T02:26:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从最小二乘法到梯度下降法（二）">
 <meta name="twitter:description" content="前言上一篇我们介绍了最小二乘法，这是一种数学优化方法，常用于拟合回归。它的基本思想就是通过令参数的偏导数为0，计算残差平方和的最小值。但是这种方法有一定的局限性，就是不适合使用计算机进行计算，因为计算机不会解方程。那么，有没有方便计算机进行计算的方法呢？答案当然是有的。计算机虽然不会解方程，但是它可以通过自己强大的计算能力，把最终答案一步一步试出来。这就是梯度下降法。 线性回归的例子还是上一篇的">
@@ -172,7 +172,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">My code and my thought.</p>
+        <h1 class="site-subtitle" itemprop="description">My code and my thought.</h1>
       
   </div>
 
@@ -287,14 +287,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
             
             
               
                 从最小二乘法到梯度下降法（二）
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -355,6 +355,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -375,10 +405,6 @@
 <h1 id="扩展到多重回归"><a href="#扩展到多重回归" class="headerlink" title="扩展到多重回归"></a>扩展到多重回归</h1><p>同样的，我们扩展到多维。我们可以得到参数 $A=[a_0, a_1, \ldots, a_k]^T$ 的梯度 $\nabla F=[F’_{a_0}, F’_{a_1}, \ldots, F’_{a_k}]^T$ 。首先随机取 $A_0$ ，然后根据公式 $A’ = A-\eta \nabla F$ 不断更新 $A$ 的值，最终求得最优参数 $A_{best}$ 。</p>
 <h1 id="随机梯度下降-SGD"><a href="#随机梯度下降-SGD" class="headerlink" title="随机梯度下降(SGD)"></a>随机梯度下降(SGD)</h1><p>上面我们使用的梯度下降方法称为批梯度下降(BGD)，它需要遍历所有样本数据，以求得梯度，在数据量巨大时，效率低下。为此，我们引入另一种梯度下降方法——随机梯度下降。<br>在随机梯度下降中，我们不是一劳永逸地算出梯度函数 $\nabla F$ ，而是每次都使用一个样本 $\begin{bmatrix} X_i \\ y_i \end{bmatrix}$ ，计算残差平方和，并求得 $\nabla F_i$ ，用作第 $i$ 次更新参数时的梯度。这样减少了梯度函数的计算量，每次只需要使用一个样本数据，但缺点是收敛速度减慢，因为每次算得的梯度方向不一定是整体最优的。</p>
 <h1 id="小批量梯度下降-MBGD"><a href="#小批量梯度下降-MBGD" class="headerlink" title="小批量梯度下降(MBGD)"></a>小批量梯度下降(MBGD)</h1><p>上述两种梯度下降方法各有优势，而小批量梯度下降则将两者结合起来。顾名思义，该方法将样本分成多个批次，每个批次都有多个样本数据。在一次梯度函数 $\nabla F$ 的计算过程中，使用一批样本数据。跟BGD相比，MBGD计算梯度函数时样本量较少，效率高；跟SGD相比，MBGD使用小批量计算梯度，减小了梯度方向的误差，使得收敛速度更快。</p>
-<hr>
-<blockquote>
-<p>本<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">作品</span>由<span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Zia Zhou</span>采用<a rel="external" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
-</blockquote>
 
       
     </div>
@@ -516,8 +542,8 @@
                alt="Zia Zhou" />
           <p class="site-author-name" itemprop="name">Zia Zhou</p>
            
-              <p class="site-description motion-element" itemprop="description">Permission to be human.</p>
-          
+              <p class="site-description motion-element" itemprop="description"></p>
+           
         </div>
         <nav class="site-state motion-element">
 
@@ -599,6 +625,12 @@
         </div>
 
         
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
         
 
         

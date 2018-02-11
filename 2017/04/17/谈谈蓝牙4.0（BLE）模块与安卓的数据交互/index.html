@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.ziazhou.com/2017/04/17/谈谈蓝牙4.0（BLE）模块与安卓的数据交互/index.html">
 <meta property="og:site_name" content="Zia's Blog">
 <meta property="og:description" content="开发蓝牙4.0也快两个月了，给我的感受还是颇多的。我开发的是与TI的蓝牙模块CC2540交互的安卓端蓝牙软件，对于安卓都不是很熟悉的我，是一个不小的挑战。我用的是google官方的源码，它本身把很多基本框架都搭好了。直接就能运行，当然前提是在Android Studio上，如果是Eclipse上还需要稍作改动。我们先来看下代码。它主要有两个Avtivity和一个Service组成，顾名思义，两个">
-<meta property="og:updated_time" content="2017-09-07T03:32:24.000Z">
+<meta property="og:updated_time" content="2018-02-11T02:28:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈蓝牙4.0（BLE）模块与安卓的数据交互">
 <meta name="twitter:description" content="开发蓝牙4.0也快两个月了，给我的感受还是颇多的。我开发的是与TI的蓝牙模块CC2540交互的安卓端蓝牙软件，对于安卓都不是很熟悉的我，是一个不小的挑战。我用的是google官方的源码，它本身把很多基本框架都搭好了。直接就能运行，当然前提是在Android Studio上，如果是Eclipse上还需要稍作改动。我们先来看下代码。它主要有两个Avtivity和一个Service组成，顾名思义，两个">
@@ -172,7 +172,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">My code and my thought.</p>
+        <h1 class="site-subtitle" itemprop="description">My code and my thought.</h1>
       
   </div>
 
@@ -287,14 +287,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
             
             
               
                 谈谈蓝牙4.0（BLE）模块与安卓的数据交互
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -355,6 +355,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -379,10 +409,6 @@
 <p>这里设置了BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE，相当于告知模块，我们从这个特性接受通知。然后，如果模块改变了其他特性值，他就会通过这个特性通知我们去读取。<br>在我们接收到通知后，安卓触发回调onCharacteristicChanged，并广播通知DeviceControlActivity去接收消息。<br>这里我们再看一下broadcastUpdate函数，这里调用的是private void broadcastUpdate(final String action, final BluetoothGattCharacteristic characteristic)。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">broadcastUpdate</span><span class="params">(<span class="keyword">final</span> String action, <span class="keyword">final</span> BluetoothGattCharacteristic characteristic)</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(action);</div><div class="line">    <span class="keyword">final</span> <span class="keyword">byte</span>[] data = characteristic.getValue();</div><div class="line">    <span class="keyword">if</span> (data != <span class="keyword">null</span> &amp;&amp; data.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">final</span> StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(data.length);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">byte</span> byteChar : data) &#123;</div><div class="line">            stringBuilder.append(String.format(<span class="string">"%02X "</span>, byteChar));</div><div class="line">        &#125;</div><div class="line">        intent.putExtra(EXTRA_DATA, <span class="keyword">new</span> String(data) + <span class="string">"\n"</span> + stringBuilder.toString());</div><div class="line">    &#125;</div><div class="line">    sendBroadcast(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>上面的代码中BluetoothLeService把接收的数据保存到了EXTRA_DATA里面。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) &#123;</div><div class="line">    intent.getStringExtra(BluetoothLeService.EXTRA_DATA);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>DeviceControlActivity再通过这里接收广播并取出数据，完成数据接收。 </p>
-<hr>
-<blockquote>
-<p>本<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">作品</span>由<span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Zia Zhou</span>采用<a rel="external" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
-</blockquote>
 
       
     </div>
@@ -511,8 +537,8 @@
                alt="Zia Zhou" />
           <p class="site-author-name" itemprop="name">Zia Zhou</p>
            
-              <p class="site-description motion-element" itemprop="description">Permission to be human.</p>
-          
+              <p class="site-description motion-element" itemprop="description"></p>
+           
         </div>
         <nav class="site-state motion-element">
 
@@ -594,6 +620,12 @@
         </div>
 
         
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
         
 
         

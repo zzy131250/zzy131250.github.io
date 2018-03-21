@@ -4,6 +4,96 @@
 
     
   <url>
+    <loc>http://www.ziazhou.com/Python%E5%BA%93%E6%8E%A8%E8%8D%90/</loc>
+    <lastmod>2018-03-21T11:40:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python库推荐</title>
+        <pubTime>2017-07-02T00:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Library</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.ziazhou.com/Paxos%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2018-03-21T11:40:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>Paxos算法学习笔记</title>
+        <pubTime>2017-04-30T00:00:00.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+        <tag>Distributed Computing</tag>
+         
+        <tag>Paxos</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.ziazhou.com/IO%E5%A4%8D%E7%94%A8/</loc>
+    <lastmod>2018-03-21T11:39:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>IO复用</title>
+        <pubTime>2017-07-01T00:00:00.000Z</pubTime>
+        
+        <tag>IO</tag>
+         
+        <tag>Asynchronous</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.ziazhou.com/hello-world/</loc>
+    <lastmod>2018-03-21T11:39:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2017-04-14T00:00:00.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Tutorial</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.ziazhou.com/%E6%8A%80%E6%9C%AF%E8%84%91%E5%9B%BE%E6%95%B4%E7%90%86/</loc>
     <lastmod>2018-03-15T11:49:25.000Z</lastmod>
     <data>
@@ -251,96 +341,6 @@
         <tag>Deep Learning</tag>
          
         <tag>Optimization</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.ziazhou.com/Python%E5%BA%93%E6%8E%A8%E8%8D%90/</loc>
-    <lastmod>2018-02-11T02:25:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python库推荐</title>
-        <pubTime>2017-07-02T00:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Library</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.ziazhou.com/Paxos%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2018-02-11T02:25:25.000Z</lastmod>
-    <data>
-        <display>
-        <title>Paxos算法学习笔记</title>
-        <pubTime>2017-04-30T00:00:00.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-        <tag>Distributed Computing</tag>
-         
-        <tag>Paxos</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.ziazhou.com/IO%E5%A4%8D%E7%94%A8/</loc>
-    <lastmod>2018-02-11T02:25:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>IO复用</title>
-        <pubTime>2017-07-01T00:00:00.000Z</pubTime>
-        
-        <tag>IO</tag>
-         
-        <tag>Asynchronous</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.ziazhou.com/hello-world/</loc>
-    <lastmod>2017-04-26T03:14:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2017-04-14T00:00:00.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-        <tag>Tutorial</tag>
          
          
            

@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.ziazhou.com/动态规划（一）——背包问题/index.html">
 <meta property="og:site_name" content="Zia's Blog">
 <meta property="og:description" content="简介动态规划是一种特殊的算法技巧，它通过把原问题分解为相对简单的子问题的方式来求解复杂问题。动态规划中，子问题的解被称为状态，状态之间的转换称作状态转换方程。动态规划的核心就是找到状态及状态转换方程。下面通过动态规划的实例——背包问题，来阐述其方法。 背包问题问题简述有一个人，他背上一个背包去森林里寻宝，发现一堆宝石，但是他的背包容量有限，无法一次装下所有宝石。假设背包容量为capacity，如">
-<meta property="og:updated_time" content="2018-02-11T02:26:14.000Z">
+<meta property="og:updated_time" content="2018-03-21T11:46:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划（一）——背包问题">
 <meta name="twitter:description" content="简介动态规划是一种特殊的算法技巧，它通过把原问题分解为相对简单的子问题的方式来求解复杂问题。动态规划中，子问题的解被称为状态，状态之间的转换称作状态转换方程。动态规划的核心就是找到状态及状态转换方程。下面通过动态规划的实例——背包问题，来阐述其方法。 背包问题问题简述有一个人，他背上一个背包去森林里寻宝，发现一堆宝石，但是他的背包容量有限，无法一次装下所有宝石。假设背包容量为capacity，如">
@@ -408,6 +408,7 @@
 <h2 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h2><p>上述问题是基本的01背包问题，另一个基本的背包问题模型，是完全背包问题。完全背包问题与01背包问题的区别在于，每一种物品都有无数个，而不是只有一个。我们仍可以按照01背包问题的方法来分析，这次maxValue[i][j]是找出前i个宝石放入容量为j的背包，每个宝石可以放0个、1个、2个、3个……我们可以发现对于每一种宝石i，能够放入背包的最大量为capacity/volume[i]。于是，我们写出状态转移方程为maxValue[i][j]=max{ maxValue[i-1][j-k*volume[i]]+k*value[i] | 0 &lt;=k&lt;=capacity/volume[i] }，然后根据状态转移方程进行实现即可。</p>
 <h2 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h2><p>多重背包问题与完全背包问题的不同在于前者在宝石数量上作了限制，给出每种宝石的数量n[i]。多重背包问题可以看作是完全背包问题的简化，即我们不需要计算每一种宝石最多可以放几个，而由题目给出。同样，我们给出状态转移方程maxValue[i][j]=max{ maxValue[i-1][j-k*volume[i]]+k*value[i] | 0 &lt;=k&lt;=n[i] }。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.hawstein.com/posts/dp-knapsack.html" target="_blank" rel="external">动态规划之背包问题（一）</a><br><a href="http://love-oriented.com/pack/" target="_blank" rel="external">背包问题九讲</a></p>
+<hr>
 
       
     </div>

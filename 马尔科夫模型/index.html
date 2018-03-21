@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.ziazhou.com/马尔科夫模型/index.html">
 <meta property="og:site_name" content="Zia's Blog">
 <meta property="og:description" content="要素 状态集合 $S=\lbrace s_0, s_1, s_2, \ldots, s_n \rbrace$ 状态转换概率矩阵 $A= \lbrace a_{ij}|0 \le i \le n, 1 \le j \le n \rbrace$  前提马尔科夫假设某个状态出现的概率仅依赖于前m个状态，称为m阶马尔科夫模型；特别地，若m=1，则称此模型为一阶马尔科夫模型。 贝叶斯公式（条件概率）$$P">
-<meta property="og:updated_time" content="2018-02-11T02:28:32.000Z">
+<meta property="og:updated_time" content="2018-03-21T11:48:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="马尔科夫模型">
 <meta name="twitter:description" content="要素 状态集合 $S=\lbrace s_0, s_1, s_2, \ldots, s_n \rbrace$ 状态转换概率矩阵 $A= \lbrace a_{ij}|0 \le i \le n, 1 \le j \le n \rbrace$  前提马尔科夫假设某个状态出现的概率仅依赖于前m个状态，称为m阶马尔科夫模型；特别地，若m=1，则称此模型为一阶马尔科夫模型。 贝叶斯公式（条件概率）$$P">
@@ -408,6 +408,7 @@
 <h2 id="贝叶斯公式（条件概率）"><a href="#贝叶斯公式（条件概率）" class="headerlink" title="贝叶斯公式（条件概率）"></a>贝叶斯公式（条件概率）</h2><p>$$P(A|B)= \frac {P(AB)} {P(B)}$$</p>
 <h1 id="一阶马尔科夫模型的应用"><a href="#一阶马尔科夫模型的应用" class="headerlink" title="一阶马尔科夫模型的应用"></a>一阶马尔科夫模型的应用</h1><h2 id="给定模型，求某序列出现的概率"><a href="#给定模型，求某序列出现的概率" class="headerlink" title="给定模型，求某序列出现的概率"></a>给定模型，求某序列出现的概率</h2><p>$$\begin{split}<br>P(o_1o_2o_3 \ldots o_k) &amp;= P(o_1)P(o_2|o_1)P(o_3|o_2) \ldots P(o_k|o_{k-1}) \\<br>&amp;= \Pi_{m=1}^k \Sigma_{i=0}^n \Sigma_{j=1}^n a_{ij}(o_{m-1}=s_i, o_m=s_j)<br>\end{split}$$</p>
 <h2 id="给定状态集合和某序列，求模型的参数"><a href="#给定状态集合和某序列，求模型的参数" class="headerlink" title="给定状态集合和某序列，求模型的参数"></a>给定状态集合和某序列，求模型的参数</h2><p>利用极大似然估计，求使得 $P(o_1o_2o_3 \ldots o_k)$ 概率最大的矩阵 $A$ 。可使用<a href="https://zh.wikipedia.org/wiki/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E6%95%B0" target="_blank" rel="external">拉格朗日乘子法</a>求满足 $\Sigma_{i=0}^n \Sigma_{j=1}^n a_{ij}=1$ 条件下 $\Pi_{m=1}^k \Sigma_{i=0}^n \Sigma_{j=1}^n a_{ij}(o_{m-1}=s_i, o_m=s_j)$ 的极值。<br>$$\begin{split}<br>F(\lambda, a_{01}, a_{02}, \ldots, a_{nn})=&amp;\Sigma_{m=1}^k \Sigma_{i=0}^n \Sigma_{j=1}^n loga_{ij}(o_{m-1}=s_i, o_m=s_j)+ \\ &amp;\lambda (\Sigma_{i=0}^n \Sigma_{j=1}^n a_{ij}-1)<br>\end{split}$$</p>
+<hr>
 
       
     </div>

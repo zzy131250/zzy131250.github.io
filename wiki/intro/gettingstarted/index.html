@@ -87,15 +87,22 @@
 
 
 
-<meta name="description" content="Permission to be human.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zia's Blog">
-<meta property="og:url" content="http://www.ziazhou.com/categories/思想/index.html">
+<meta name="description" content="[TOC] Simiki Simiki is a simple wiki framework, written in Python.  Easy to use. Creating a wiki only needs a few steps Use Markdown. Just open your editor and write Store source files by category Sta">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Getting Started">
+<meta property="og:url" content="http://www.ziazhou.com/wiki/intro/gettingstarted/index.html">
 <meta property="og:site_name" content="Zia's Blog">
-<meta property="og:description" content="Permission to be human.">
+<meta property="og:description" content="[TOC] Simiki Simiki is a simple wiki framework, written in Python.  Easy to use. Creating a wiki only needs a few steps Use Markdown. Just open your editor and write Store source files by category Sta">
+<meta property="og:image" content="http://img.shields.io/pypi/v/simiki.svg">
+<meta property="og:image" content="http://img.shields.io/badge/license-MIT-yellow.svg">
+<meta property="og:image" content="https://travis-ci.org/tankywoo/simiki.svg">
+<meta property="og:image" content="https://img.shields.io/coveralls/tankywoo/simiki.svg">
+<meta property="og:updated_time" content="2018-03-22T05:26:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zia's Blog">
-<meta name="twitter:description" content="Permission to be human.">
+<meta name="twitter:title" content="Getting Started">
+<meta name="twitter:description" content="[TOC] Simiki Simiki is a simple wiki framework, written in Python.  Easy to use. Creating a wiki only needs a few steps Use Markdown. Just open your editor and write Store source files by category Sta">
+<meta name="twitter:image" content="http://img.shields.io/pypi/v/simiki.svg">
 
 
 
@@ -123,13 +130,19 @@
 
 
 
-  <link rel="canonical" href="http://www.ziazhou.com/categories/思想/"/>
+  <link rel="canonical" href="http://www.ziazhou.com/wiki/intro/gettingstarted/"/>
 
 
 
 
 
-  <title> 分类: 思想 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>
+  
+
+  
+    Getting Started | Zia's Blog
+  
+</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,47 +271,50 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        思想
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">Getting Started</h2>
+
+
+
+</header>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/目标遐想/" itemprop="url">
-              
-                <span itemprop="name">目标遐想</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-14T00:00:00+00:00"
-              content="2017-05-14" >
-          05-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+    
+      <p>[TOC]</p>
+<h1 id="Simiki"><a href="#Simiki" class="headerlink" title="Simiki"></a>Simiki</h1><p><a href="https://pypi.python.org/pypi/simiki" target="_blank" rel="external"><img src="http://img.shields.io/pypi/v/simiki.svg" alt="Latest Version"></a><br><a href="https://github.com/tankywoo/simiki/blob/master/LICENSE" target="_blank" rel="external"><img src="http://img.shields.io/badge/license-MIT-yellow.svg" alt="The MIT License"></a><br><a href="https://travis-ci.org/tankywoo/simiki" target="_blank" rel="external"><img src="https://travis-ci.org/tankywoo/simiki.svg" alt="Build Status"></a><br><a href="https://coveralls.io/r/tankywoo/simiki" target="_blank" rel="external"><img src="https://img.shields.io/coveralls/tankywoo/simiki.svg" alt="Coverage Status"></a></p>
+<p>Simiki is a simple wiki framework, written in <a href="https://www.python.org/" target="_blank" rel="external">Python</a>.</p>
+<ul>
+<li>Easy to use. Creating a wiki only needs a few steps</li>
+<li>Use <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="external">Markdown</a>. Just open your editor and write</li>
+<li>Store source files by category</li>
+<li>Static HTML output</li>
+<li>A CLI tool to manage the wiki</li>
+</ul>
+<p>Simiki is short for <code>Simple Wiki</code> :)</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><pre><code>pip install simiki
+</code></pre><h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><pre><code>pip install -U simiki
+</code></pre><h3 id="Init-Site"><a href="#Init-Site" class="headerlink" title="Init Site"></a>Init Site</h3><pre><code>mkdir mywiki &amp;&amp; cd mywiki
+simiki init
+</code></pre><h3 id="Create-a-new-wiki"><a href="#Create-a-new-wiki" class="headerlink" title="Create a new wiki"></a>Create a new wiki</h3><pre><code>simiki new -t &quot;Hello Simiki&quot; -c first-catetory
+</code></pre><h3 id="Generate"><a href="#Generate" class="headerlink" title="Generate"></a>Generate</h3><pre><code>simiki g
+</code></pre><h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><pre><code>simiki p -w
+</code></pre><p>For more information, <code>simiki -h</code> or have a look at <a href="http://simiki.org" target="_blank" rel="external">Simiki.org</a></p>
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><ul>
+<li><a href="http://simiki.org" target="_blank" rel="external">simiki.org</a></li>
+<li><a href="https://github.com/tankywoo/simiki" target="_blank" rel="external">https://github.com/tankywoo/simiki</a></li>
+<li>Email: <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x65;&#64;&#116;&#x61;&#110;&#x6b;&#121;&#119;&#x6f;&#x6f;&#x2e;&#x63;&#111;&#109;">&#x6d;&#x65;&#64;&#116;&#x61;&#110;&#x6b;&#121;&#119;&#x6f;&#x6f;&#x2e;&#x63;&#111;&#109;</a></li>
+<li><a href="https://github.com/tankywoo/simiki/wiki/Simiki-Users" target="_blank" rel="external">Simiki Users</a></li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>The MIT License (MIT)</p>
+<p>Copyright (c) 2013 Tanky Woo</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of<br>this software and associated documentation files (the “Software”), to deal in<br>the Software without restriction, including without limitation the rights to<br>use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of<br>the Software, and to permit persons to whom the Software is furnished to do so,<br>subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all<br>copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br>IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS<br>FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR<br>COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER<br>IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN<br>CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
     
-  </section>
-
-  
-
+  </div>
 
 
           </div>
@@ -306,6 +322,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ0Mi82MDEw"></div>
+    
+  </div>
+
 
         </div>
         

@@ -1,0 +1,899 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,BLE," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="开发蓝牙4.0也快两个月了，给我的感受还是颇多的。我开发的是与TI的蓝牙模块CC2540交互的安卓端蓝牙软件，对于安卓都不是很熟悉的我，是一个不小的挑战。我用的是google官方的源码，它本身把很多基本框架都搭好了。直接就能运行，当然前提是在Android Studio上，如果是Eclipse上还需要稍作改动。我们先来看下代码。它主要有两个Avtivity和一个Service组成，顾名思义，两个">
+<meta name="keywords" content="Android,BLE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈蓝牙4.0（BLE）模块与安卓的数据交互">
+<meta property="og:url" content="http://www.ziazhou.com/android/谈谈蓝牙4.0（BLE）模块与安卓的数据交互/index.html">
+<meta property="og:site_name" content="Zia's Blog">
+<meta property="og:description" content="开发蓝牙4.0也快两个月了，给我的感受还是颇多的。我开发的是与TI的蓝牙模块CC2540交互的安卓端蓝牙软件，对于安卓都不是很熟悉的我，是一个不小的挑战。我用的是google官方的源码，它本身把很多基本框架都搭好了。直接就能运行，当然前提是在Android Studio上，如果是Eclipse上还需要稍作改动。我们先来看下代码。它主要有两个Avtivity和一个Service组成，顾名思义，两个">
+<meta property="og:updated_time" content="2018-03-21T11:48:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="谈谈蓝牙4.0（BLE）模块与安卓的数据交互">
+<meta name="twitter:description" content="开发蓝牙4.0也快两个月了，给我的感受还是颇多的。我开发的是与TI的蓝牙模块CC2540交互的安卓端蓝牙软件，对于安卓都不是很熟悉的我，是一个不小的挑战。我用的是google官方的源码，它本身把很多基本框架都搭好了。直接就能运行，当然前提是在Android Studio上，如果是Eclipse上还需要稍作改动。我们先来看下代码。它主要有两个Avtivity和一个Service组成，顾名思义，两个">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ziazhou.com/android/谈谈蓝牙4.0（BLE）模块与安卓的数据交互/"/>
+
+
+
+
+
+  <title> 谈谈蓝牙4.0（BLE）模块与安卓的数据交互 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zia's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My code and my thought.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.ziazhou.com/android/谈谈蓝牙4.0（BLE）模块与安卓的数据交互/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zia Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zia's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                谈谈蓝牙4.0（BLE）模块与安卓的数据交互
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T00:00:00+00:00">
+                2017-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,427
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>开发蓝牙4.0也快两个月了，给我的感受还是颇多的。<br>我开发的是与TI的蓝牙模块CC2540交互的安卓端蓝牙软件，对于安卓都不是很熟悉的我，是一个不小的挑战。<br>我用的是google官方的源码，它本身把很多基本框架都搭好了。直接就能运行，当然前提是在Android Studio上，如果是Eclipse上还需要稍作改动。<br>我们先来看下代码。它主要有两个Avtivity和一个Service组成，顾名思义，两个Activity的用途分别为设备扫描与设备管理。<br>这里我不准备介绍基本的BLE知识（自行百度即可），我只是说一下一些需要注意的地方，特别是我百度不到的好多东西，希望跟大家分享一下。<br>一开始的软件已经可以查看Service和Characteristic的UUID，不过只能接收消息，原因大概是这个Sample当初设计的时候就只负责接收。当然要发送也简单，只要在BluetoothLeService中加writeCharacteristic方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">writeCharacteristic</span><span class="params">(BluetoothGattCharacteristic charac，String message)</span></span>&#123;</div><div class="line">    <span class="comment">// check if mBluetoothGatt is available</span></div><div class="line">    <span class="keyword">if</span> (mBluetoothGatt == <span class="keyword">null</span>) &#123;</div><div class="line">        Log.e(TAG, <span class="string">"lost connection"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    charac.setValue(message.getBytes());</div><div class="line">    <span class="keyword">boolean</span> status = mBluetoothGatt.writeCharacteristic(charac);</div><div class="line">    <span class="keyword">return</span> status;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>写数据比较简单，直接调用这个方法即可。当然，这里也有个陷阱，我们发现，如果你在cc2540中定义了Byte字节的长度，那么在charac.setValue()中的数组长度要跟其相同，不然模块是收不到的。<br>我们发现在很多地方都用到了BluetoothGattCharacteristic这个类，即特性，BLE就是靠改变特性值来传递数据的，那么，这些BluetoothGattCharacteristic是从哪里得到的呢？我们知道，BluetoothGattCharacteristic是BluetoothGattService中的属性，我们要得到BluetoothGattCharacteristic，就要先得到BluetoothGattService。那要怎么样得到BluetoothGattService呢？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConnectionStateChange</span><span class="params">(BluetoothGatt gatt, <span class="keyword">int</span> status, <span class="keyword">int</span> newState)</span> </span>&#123;</div><div class="line">    String intentAction;</div><div class="line">    <span class="keyword">if</span> (newState == BluetoothProfile.STATE_CONNECTED) &#123;</div><div class="line">        intentAction = ACTION_GATT_CONNECTED;</div><div class="line">        mConnectionState = STATE_CONNECTED;</div><div class="line">        broadcastUpdate(intentAction);</div><div class="line">        Log.i(TAG, <span class="string">"Connected to GATT server."</span>);</div><div class="line">        <span class="comment">// Attempts to discover services after successful connection.</span></div><div class="line">        Log.i(TAG, <span class="string">"Attempting to start service discovery:"</span> + mBluetoothGatt.discoverServices());</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newState == BluetoothProfile.STATE_DISCONNECTED) &#123;</div><div class="line">        intentAction = ACTION_GATT_DISCONNECTED;</div><div class="line">        mConnectionState = STATE_DISCONNECTED;</div><div class="line">        Log.i(TAG, <span class="string">"Disconnected from GATT server."</span>);</div><div class="line">        broadcastUpdate(intentAction);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里先简单见一下回调，开发过安卓的朋友们应该了解，在安卓开发中，某个动作可能会出发后续的动作，这个被触发的动作就是回调。这里onConnectionStateChange函数就是在连接状态改变后会触发的回调，我们看到mBluetoothGatt.discoverServices()这里执行了发现服务的方法，那么在发现完服务呢？没错，它同样触发回调。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServicesDiscovered</span><span class="params">(BluetoothGatt gatt, <span class="keyword">int</span> status)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (status == BluetoothGatt.GATT_SUCCESS) &#123;</div><div class="line">        broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED);</div><div class="line">    &#125; <span class="keyword">else</span> &#123; </div><div class="line">        Log.w(TAG, <span class="string">"onServicesDiscovered received: "</span> + status);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>它会调用onServicesDiscovered(BluetoothGatt gatt, int status)方法，在这里它会发出一个广播broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED)。值得注意的是，在这里，BluetoothLeService与DeviceControlActivity交互的方式是广播。我们看到broadcastUpdate方法，在BluetoothLeService中。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">broadcastUpdate</span><span class="params">(<span class="keyword">final</span> String action)</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(action);</div><div class="line">    sendBroadcast(intent);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">broadcastUpdate</span><span class="params">(<span class="keyword">final</span> String action, <span class="keyword">final</span> BluetoothGattCharacteristic characteristic)</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(action);</div><div class="line">    <span class="keyword">final</span> <span class="keyword">byte</span>[] data = characteristic.getValue();</div><div class="line">    <span class="keyword">if</span> (data != <span class="keyword">null</span> &amp;&amp; data.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">final</span> StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(data.length);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">byte</span> byteChar : data) &#123;</div><div class="line">            stringBuilder.append(String.format(<span class="string">"%02X "</span>, byteChar));</div><div class="line">        &#125;</div><div class="line">        intent.putExtra(EXTRA_DATA, <span class="keyword">new</span> String(data) + <span class="string">"\n"</span> + stringBuilder.toString());</div><div class="line">    &#125;</div><div class="line">    sendBroadcast(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里有两个broadcastUpdate，但效果是相似的，他们都调用sendBroadcast(intent)，至于sendBroadcast方法，就是底层的一些实现了，这里不用管他。我们知道了，在发现了服务之后，BluetoothLeService就sendBroadcast。那么，这个Broadcast传到哪里呢？答案是这里。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> BroadcastReceiver mGattUpdateReceiver = <span class="keyword">new</span> BroadcastReceiver() &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) &#123;</div><div class="line">            mBluetoothLeService.getSupportedGattServices()；</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在DeviceControlActivity中有个onReceive方法，就是接受广播的地方。他通过参数intent的值判断广播的内容。ACTION_GATT_SERVICES_DISCOVERED这个参数表示发现服务。这里再调用getSupportedGattServices就可以获得服务啦。然后特性什么的就都知道了。<br>目前为止我们解决了往特性里写值的问题，那么，如何读取模块发来的消息呢？我们来说说具体的接收流程。<br>我们首先要明确的是，安卓端接收消息的被动的，它只能被动地告知要接收消息，而告诉他的人就是模块。这里我们说一下特性，特性有自身的一些属性，其实一个服务的每个特性都有自己独立的作用，这个可以自己定义，主要有可写，可读，还有专门用来通知的，即Notification，在模块改变了特性值，他得让手机知道，那么他就通过有Notification功能的特性发出通知。那么，如果模块的Service有好多特性，他怎么知道往哪个特性中发通知呢？所以，我们必须先告知模块我们通过那个特性接收通知，代码如下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCharacteristicNotification</span><span class="params">(BluetoothGattCharacteristic characteristic, <span class="keyword">boolean</span> enabled)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span> || mBluetoothGatt == <span class="keyword">null</span>) &#123;</div><div class="line">        Log.w(TAG, <span class="string">"BluetoothAdapter not initialized"</span>);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    BluetoothGattDescriptor descriptor = characteristic.getDescriptor(UUID.fromString(DeviceControlActivity.NotificationCharacDescripter));</div><div class="line">    descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);</div><div class="line">    mBluetoothGatt.writeDescriptor(descriptor);  </div><div class="line"></div><div class="line">    mBluetoothGatt.setCharacteristicNotification(characteristic, enabled);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里设置了BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE，相当于告知模块，我们从这个特性接受通知。然后，如果模块改变了其他特性值，他就会通过这个特性通知我们去读取。<br>在我们接收到通知后，安卓触发回调onCharacteristicChanged，并广播通知DeviceControlActivity去接收消息。<br>这里我们再看一下broadcastUpdate函数，这里调用的是private void broadcastUpdate(final String action, final BluetoothGattCharacteristic characteristic)。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">broadcastUpdate</span><span class="params">(<span class="keyword">final</span> String action, <span class="keyword">final</span> BluetoothGattCharacteristic characteristic)</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(action);</div><div class="line">    <span class="keyword">final</span> <span class="keyword">byte</span>[] data = characteristic.getValue();</div><div class="line">    <span class="keyword">if</span> (data != <span class="keyword">null</span> &amp;&amp; data.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">final</span> StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(data.length);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">byte</span> byteChar : data) &#123;</div><div class="line">            stringBuilder.append(String.format(<span class="string">"%02X "</span>, byteChar));</div><div class="line">        &#125;</div><div class="line">        intent.putExtra(EXTRA_DATA, <span class="keyword">new</span> String(data) + <span class="string">"\n"</span> + stringBuilder.toString());</div><div class="line">    &#125;</div><div class="line">    sendBroadcast(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面的代码中BluetoothLeService把接收的数据保存到了EXTRA_DATA里面。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) &#123;</div><div class="line">    intent.getStringExtra(BluetoothLeService.EXTRA_DATA);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>DeviceControlActivity再通过这里接收广播并取出数据，完成数据接收。 </p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="Zia Zhou WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Zia Zhou Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Zia Zhou
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.ziazhou.com/android/谈谈蓝牙4.0（BLE）模块与安卓的数据交互/" title="谈谈蓝牙4.0（BLE）模块与安卓的数据交互">http://www.ziazhou.com/android/谈谈蓝牙4.0（BLE）模块与安卓的数据交互/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/BLE/" rel="tag"># BLE</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/algorithm/区块链的共识问题/" rel="next" title="区块链的共识问题">
+                <i class="fa fa-chevron-left"></i> 区块链的共识问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ0Mi82MDEw"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Zia Zhou" />
+          <p class="site-author-name" itemprop="name">Zia Zhou</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zzy131250" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3911881253/profile" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/xi-men-dong-men-87" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/129130885/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.cylong.com/" title="笑话人生" target="_blank">笑话人生</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cielni.com/" title="年轮说 | Ciel Ni" target="_blank">年轮说 | Ciel Ni</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zia Zhou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

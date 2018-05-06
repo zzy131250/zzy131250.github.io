@@ -1,0 +1,923 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm,DP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="简介动态规划是一种特殊的算法技巧，它通过把原问题分解为相对简单的子问题的方式来求解复杂问题。动态规划中，子问题的解被称为状态，状态之间的转换称作状态转换方程。动态规划的核心就是找到状态及状态转换方程。下面通过动态规划的实例——背包问题，来阐述其方法。 背包问题问题简述有一个人，他背上一个背包去森林里寻宝，发现一堆宝石，但是他的背包容量有限，无法一次装下所有宝石。假设背包容量为capacity，如">
+<meta name="keywords" content="Algorithm,DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划（一）——背包问题">
+<meta property="og:url" content="http://www.ziazhou.com/algorithm/动态规划（一）——背包问题/index.html">
+<meta property="og:site_name" content="Zia's Blog">
+<meta property="og:description" content="简介动态规划是一种特殊的算法技巧，它通过把原问题分解为相对简单的子问题的方式来求解复杂问题。动态规划中，子问题的解被称为状态，状态之间的转换称作状态转换方程。动态规划的核心就是找到状态及状态转换方程。下面通过动态规划的实例——背包问题，来阐述其方法。 背包问题问题简述有一个人，他背上一个背包去森林里寻宝，发现一堆宝石，但是他的背包容量有限，无法一次装下所有宝石。假设背包容量为capacity，如">
+<meta property="og:updated_time" content="2018-03-21T11:46:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态规划（一）——背包问题">
+<meta name="twitter:description" content="简介动态规划是一种特殊的算法技巧，它通过把原问题分解为相对简单的子问题的方式来求解复杂问题。动态规划中，子问题的解被称为状态，状态之间的转换称作状态转换方程。动态规划的核心就是找到状态及状态转换方程。下面通过动态规划的实例——背包问题，来阐述其方法。 背包问题问题简述有一个人，他背上一个背包去森林里寻宝，发现一堆宝石，但是他的背包容量有限，无法一次装下所有宝石。假设背包容量为capacity，如">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ziazhou.com/algorithm/动态规划（一）——背包问题/"/>
+
+
+
+
+
+  <title> 动态规划（一）——背包问题 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zia's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My code and my thought.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.ziazhou.com/algorithm/动态规划（一）——背包问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zia Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zia's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                动态规划（一）——背包问题
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-23T00:00:00+00:00">
+                2017-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,720
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>动态规划是一种特殊的算法技巧，它通过把原问题分解为相对简单的子问题的方式来求解复杂问题。<br>动态规划中，子问题的解被称为状态，状态之间的转换称作状态转换方程。动态规划的核心就是找到状态及状态转换方程。<br>下面通过动态规划的实例——背包问题，来阐述其方法。</p>
+<h1 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h1><h2 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h2><p>有一个人，他背上一个背包去森林里寻宝，发现一堆宝石，但是他的背包容量有限，无法一次装下所有宝石。假设背包容量为capacity，如果把宝石编号为1，2，…，n，宝石的体积分别为volume[0]，volume[1]，…，volume[n-1]，宝石的价值依次为value[0]，value[1]，…，value[n-1]。现在问题来了，这个人如何挑选宝石放进背包，可以使自己获得最大利益？</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>这是一个典型的动态规划问题。我们不妨先来假设一下，假设背包容量为10，宝石的体积为5，4，3，宝石的价值为20，10，12。<br>如果什么都不想，直接排列组合，也是可以的。对于每一个宝石，有两种选择，放入背包，或者不放入背包。这样一共有8种情况，只需再考虑每种情况下背包的容量问题，然后得出最大价值即可。<br>这种方法的劣势在于需要计算所有的情况，有些明显不符合的情况也需要判断。比如，所有宝石都不放，或者所有宝石都放入的情况，应该是可以直接跳过不考虑的。<br>那么，有没有比这个简单，或者说，效率更高的方法？答案就是动态规划。<br>前面提到，动态规划的核心在于找到状态及状态转移方程。我们不妨试着来找一下。<br>首先，状态很容易找到。我们先从简单的情况着手。第一次，把前一个宝石放入背包，得到最大价值20；第二次，把前两个宝石放入背包，得到最大价值30；第三次，把前三个宝石放入背包，得到最大价值32。是不是发现什么规律？对！他们可以统一表示，如果把maxValue[i][j]定义为将前i个宝石放入容量为j的背包可以得到的最大价值，那么上述三次操作可以表示为：maxValue[1][10]=20，maxValue[2][10]=30，maxValue[3][10]=32。这些都是我们要找的状态，当然，这些也只是其中的一部分状态。<br>下面，我们找状态转移方程，即从前一个状态，转移到后一个状态所经历的变化过程。我们不妨从后往前推，找从后一个状态，转移到前一个状态经历的变化。要得到maxValue[3][10]，有两种情况，即第三个宝石放入和不放入的情况。若第三个宝石不放入背包，则maxValue[3][10]=maxValue[2][10]；若第三个宝石放入背包，可以得到maxValue[3][10]=maxValue[2][10-3]+12=maxValue[2][7]+12。综上，maxValue[3][10]=max{ maxValue[2][10], maxValue[2][7]+12 }。问题便转换为求前一个状态maxValue[2][10]与maxValue[2][7]的值。接着，再经过一步一步的转换，最终化繁为简，转换到初始状态，并解决问题。<br>下面，我们用过代码实例（Java实现）来具体阐述。我们会用递归方法与非递归方法解决之，由于个人感觉递归方法较易理解，故先讲述递归方法。</p>
+<h2 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h2><p>递归方法与分析的过程一致，从后往前推导，逐步得到最大价值。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回前number个宝石放入容量为capacity的背包可以获得的最大价值</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">knapsackProblemRecursive</span><span class="params">(<span class="keyword">int</span>[] volumes, <span class="keyword">int</span>[] values, <span class="keyword">int</span> number, <span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">	<span class="comment">// number从1开始，如果number为0时，可以获得的最大价值为0</span></div><div class="line">	<span class="keyword">if</span> (number == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="comment">// 判断第number个宝石是否放入</span></div><div class="line">	<span class="comment">// 第number个宝石不放入背包，计算最大价值</span></div><div class="line">	<span class="keyword">int</span> notAdded = knapsackProblemRecursive(volumes, values, number-<span class="number">1</span>, capacity);</div><div class="line">	<span class="comment">// 第number个宝石放入背包，计算最大价值</span></div><div class="line">	<span class="keyword">int</span> added = <span class="number">0</span>;</div><div class="line">	<span class="comment">// 放入背包前确保有足够空间</span></div><div class="line">	<span class="keyword">if</span> (capacity &gt;= volumes[number-<span class="number">1</span>]) &#123;</div><div class="line">		added = knapsackProblemRecursive(volumes, values, number-<span class="number">1</span>, capacity-volumes[number-<span class="number">1</span>]) + values[number-<span class="number">1</span>];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> notAdded &gt; added ? notAdded : added;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="非递归方法"><a href="#非递归方法" class="headerlink" title="非递归方法"></a>非递归方法</h2><p>非递归方法参考了Hawstein博客中的方法，使用二维数组存储各个状态下的最大价值，即局部最优解，最后得到全局最优解。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回前number个宝石放入容量为capacity的背包可以获得的最大价值</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">knapsackProblemNonRecursive</span><span class="params">(<span class="keyword">int</span>[] volumes, <span class="keyword">int</span>[] values, <span class="keyword">int</span> number, <span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">	<span class="comment">// maxValues[i][j]: 前i个宝石装入剩余容量为j的背包中的最大价值</span></div><div class="line">	<span class="keyword">int</span>[][] maxValues = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100</span>][<span class="number">100</span>];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= number; i++) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= capacity; j++) &#123;</div><div class="line">			<span class="comment">// number从1开始，前0个宝石放入背包，最大价值均为0</span></div><div class="line">			<span class="comment">// 第i个宝石不放入背包，计算最大价值</span></div><div class="line">			maxValues[i][j] = i==<span class="number">0</span> ? <span class="number">0</span> : maxValues[i-<span class="number">1</span>][j];</div><div class="line">			<span class="comment">// 确保有足够空间放入宝石</span></div><div class="line">			<span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; j &gt;= volumes[i-<span class="number">1</span>]) &#123;</div><div class="line">				<span class="comment">// 第i个宝石放入背包，计算最大价值</span></div><div class="line">				<span class="keyword">int</span> added = maxValues[i-<span class="number">1</span>][j-volumes[i-<span class="number">1</span>]] + values[i-<span class="number">1</span>];</div><div class="line">				maxValues[i][j] = maxValues[i][j] &gt; added ? maxValues[i][j] : added;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 返回要求计算的最大价值</span></div><div class="line">	<span class="keyword">return</span> maxValues[number][capacity];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h2><p>上述问题是基本的01背包问题，另一个基本的背包问题模型，是完全背包问题。完全背包问题与01背包问题的区别在于，每一种物品都有无数个，而不是只有一个。我们仍可以按照01背包问题的方法来分析，这次maxValue[i][j]是找出前i个宝石放入容量为j的背包，每个宝石可以放0个、1个、2个、3个……我们可以发现对于每一种宝石i，能够放入背包的最大量为capacity/volume[i]。于是，我们写出状态转移方程为maxValue[i][j]=max{ maxValue[i-1][j-k*volume[i]]+k*value[i] | 0 &lt;=k&lt;=capacity/volume[i] }，然后根据状态转移方程进行实现即可。</p>
+<h2 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h2><p>多重背包问题与完全背包问题的不同在于前者在宝石数量上作了限制，给出每种宝石的数量n[i]。多重背包问题可以看作是完全背包问题的简化，即我们不需要计算每一种宝石最多可以放几个，而由题目给出。同样，我们给出状态转移方程maxValue[i][j]=max{ maxValue[i-1][j-k*volume[i]]+k*value[i] | 0 &lt;=k&lt;=n[i] }。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.hawstein.com/posts/dp-knapsack.html" target="_blank" rel="external">动态规划之背包问题（一）</a><br><a href="http://love-oriented.com/pack/" target="_blank" rel="external">背包问题九讲</a></p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="Zia Zhou WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Zia Zhou Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Zia Zhou
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.ziazhou.com/algorithm/动态规划（一）——背包问题/" title="动态规划（一）——背包问题">http://www.ziazhou.com/algorithm/动态规划（一）——背包问题/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/DP/" rel="tag"># DP</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/algorithm/Paxos算法学习笔记/" rel="next" title="Paxos算法学习笔记">
+                <i class="fa fa-chevron-left"></i> Paxos算法学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/algorithm/区块链的共识问题/" rel="prev" title="区块链的共识问题">
+                区块链的共识问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ0Mi82MDEw"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Zia Zhou" />
+          <p class="site-author-name" itemprop="name">Zia Zhou</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zzy131250" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3911881253/profile" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/xi-men-dong-men-87" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/129130885/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.cylong.com/" title="笑话人生" target="_blank">笑话人生</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cielni.com/" title="年轮说 | Ciel Ni" target="_blank">年轮说 | Ciel Ni</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#背包问题"><span class="nav-number">2.</span> <span class="nav-text">背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题简述"><span class="nav-number">2.1.</span> <span class="nav-text">问题简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题分析"><span class="nav-number">2.2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归方法"><span class="nav-number">2.3.</span> <span class="nav-text">递归方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非递归方法"><span class="nav-number">2.4.</span> <span class="nav-text">非递归方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全背包问题"><span class="nav-number">2.5.</span> <span class="nav-text">完全背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重背包问题"><span class="nav-number">2.6.</span> <span class="nav-text">多重背包问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zia Zhou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

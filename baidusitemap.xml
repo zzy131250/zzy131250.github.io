@@ -4,21 +4,6 @@
 
     
   <url>
-    <loc>http://www.ziazhou.com/my/lzy/</loc>
-    <lastmod>2018-05-06T08:11:39.000Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2018-05-06T08:11:39.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.ziazhou.com/algorithm/%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2018-03-21T11:48:22.000Z</lastmod>
     <data>
@@ -70,9 +55,9 @@
         <title>记一次异常数据过滤算法的优化</title>
         <pubTime>2017-07-13T00:00:00.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>Optimization</tag>
+         
+        <tag>Algorithm</tag>
          
          
            

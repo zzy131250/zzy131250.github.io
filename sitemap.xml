@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ziazhou.com/readings/%E6%8A%80%E6%9C%AF%E8%84%91%E5%9B%BE%E6%95%B4%E7%90%86/</loc>
+    
+    <lastmod>2018-06-01T09:17:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ziazhou.com/algorithm/%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc>
     
     <lastmod>2018-03-21T11:48:22.000Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://www.ziazhou.com/thoughts/%E7%9B%AE%E6%A0%87%E9%81%90%E6%83%B3/</loc>
     
     <lastmod>2018-03-21T11:47:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ziazhou.com/readings/%E6%8A%80%E6%9C%AF%E8%84%91%E5%9B%BE%E6%95%B4%E7%90%86/</loc>
-    
-    <lastmod>2018-03-21T11:47:49.000Z</lastmod>
     
   </url>
   

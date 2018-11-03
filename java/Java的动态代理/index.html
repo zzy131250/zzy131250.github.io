@@ -87,17 +87,19 @@
 
 
 
-<meta name="description" content="前言Java 的动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。 一个例子我们先来写个简单的例子，先定义两个接口 Subject 和 Subject2。 1234567public interface Subject &amp;#123;    void hello();&amp;#125;public interface Subject2 &amp;#123;    void">
+<meta name="description" content="前言jdk 动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。 一个例子我们先来写个简单的例子，先定义两个接口 Subject 和 Subject2。 1234567public interface Subject &amp;#123;    void hello();&amp;#125;public interface Subject2 &amp;#123;    void h">
 <meta name="keywords" content="Java,Dynamic Proxy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 的动态代理">
+<meta property="og:title" content="jdk 动态代理">
 <meta property="og:url" content="http://www.ziazhou.com/java/Java的动态代理/index.html">
 <meta property="og:site_name" content="Zia's Blog">
-<meta property="og:description" content="前言Java 的动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。 一个例子我们先来写个简单的例子，先定义两个接口 Subject 和 Subject2。 1234567public interface Subject &amp;#123;    void hello();&amp;#125;public interface Subject2 &amp;#123;    void">
-<meta property="og:updated_time" content="2018-09-02T05:55:00.000Z">
+<meta property="og:description" content="前言jdk 动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。 一个例子我们先来写个简单的例子，先定义两个接口 Subject 和 Subject2。 1234567public interface Subject &amp;#123;    void hello();&amp;#125;public interface Subject2 &amp;#123;    void h">
+<meta property="og:image" content="http://zia-blog.oss-cn-hangzhou.aliyuncs.com/18-11-3/89877028.jpg">
+<meta property="og:updated_time" content="2018-11-03T12:35:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 的动态代理">
-<meta name="twitter:description" content="前言Java 的动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。 一个例子我们先来写个简单的例子，先定义两个接口 Subject 和 Subject2。 1234567public interface Subject &amp;#123;    void hello();&amp;#125;public interface Subject2 &amp;#123;    void">
+<meta name="twitter:title" content="jdk 动态代理">
+<meta name="twitter:description" content="前言jdk 动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。 一个例子我们先来写个简单的例子，先定义两个接口 Subject 和 Subject2。 1234567public interface Subject &amp;#123;    void hello();&amp;#125;public interface Subject2 &amp;#123;    void h">
+<meta name="twitter:image" content="http://zia-blog.oss-cn-hangzhou.aliyuncs.com/18-11-3/89877028.jpg">
 
 
 
@@ -131,7 +133,7 @@
 
 
 
-  <title> Java 的动态代理 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> jdk 动态代理 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +293,7 @@
             
             
               
-                Java 的动态代理
+                jdk 动态代理
               
             
           </h2>
@@ -364,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,033
+                  1,039
                 </span>
               
 
@@ -400,7 +402,7 @@
 
       
         <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Java 的动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>jdk 动态代理可以让我们很容易地实现代理模式。通过解析动态代理的实现机制，我们可以更好地使用它。</p>
 <h1 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h1><p>我们先来写个简单的例子，先定义两个接口 Subject 和 Subject2。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject2</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">hello2</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>再定义一个实现类来实现上面的两个接口。</p>
@@ -416,6 +418,7 @@
 <li>在 invoke 方法中，不能使用参数中的 proxy 来调用方法，这样会导致循环调用，最终导致栈溢出。</li>
 <li>在 main 方法中， subject 的对象声明可以是 Subject、Subject2、SubjectImpl中的任意一个，因为这里不是根据对象的声明来调用方法。</li>
 </ol>
+<p>附上类图供参考。<br><img src="http://zia-blog.oss-cn-hangzhou.aliyuncs.com/18-11-3/89877028.jpg" alt=""></p>
 <h1 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h1><p>下面，我们来分析一下动态代理的源码实现，这里我们使用的是 jdk 1.8.0_144 版本。我们先来看下 Proxy.newProxyInstance() 这个方法，这个方法接收一个 ClassLoader，一组接口和一个 InvocationHandler。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">newProxyInstance</span><span class="params">(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</div><div class="line">	...</div><div class="line">	<span class="comment">// 根据类加载器和接口获取代理类</span></div><div class="line">	Class&lt;?&gt; cl = getProxyClass0(loader, intfs);</div><div class="line">	...</div><div class="line">	<span class="comment">// 获取代理类的构造方法</span></div><div class="line">	<span class="keyword">final</span> Constructor&lt;?&gt; cons = cl.getConstructor(constructorParams);</div><div class="line">	...</div><div class="line">	<span class="comment">// 使用构造方法新建一个实例，并将 InvocationHandler 参数传入</span></div><div class="line">	<span class="keyword">return</span> cons.newInstance(<span class="keyword">new</span> Object[]&#123;h&#125;);</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这里的关键是 getProxyClass0() 这个方法，我们看到方法里面是从一个 cache 中获取代理类。这个 cache 的作用是缓存已经生成的代理类以便后续使用，如果没有符合要求的代理类，则会根据该 cache 构造方法传入的 ProxyClassFactory 生成一个我们需要的代理类。下面我们看下 ProxyClassFactory 的实现，它主要实现了一个 apply() 方法，来生成代理类。</p>
@@ -477,7 +480,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://www.ziazhou.com/java/Java的动态代理/" title="Java 的动态代理">http://www.ziazhou.com/java/Java的动态代理/</a>
+      <a href="http://www.ziazhou.com/java/Java的动态代理/" title="jdk 动态代理">http://www.ziazhou.com/java/Java的动态代理/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>

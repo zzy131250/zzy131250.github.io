@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>http://www.ziazhou.com/crawler/%E5%81%9A%E4%B8%80%E5%8F%AA%E7%88%AC%E8%99%AB%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84/</loc>
+    <lastmod>2019-04-11T13:47:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>做一只爬虫需要考虑的</title>
+        <pubTime>2019-04-10T00:00:00.000Z</pubTime>
+        
+        <tag>Crawler</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.ziazhou.com/java/JDK%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
+    <lastmod>2019-04-10T04:01:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>JDK 动态代理</title>
+        <pubTime>2018-09-02T00:00:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Dynamic Proxy</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.ziazhou.com/algorithm/Paxos%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-03-25T09:41:43.000Z</lastmod>
     <data>
@@ -27,28 +69,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://www.ziazhou.com/java/Java%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
-    <lastmod>2018-11-03T12:35:17.000Z</lastmod>
-    <data>
-        <display>
-        <title>jdk 动态代理</title>
-        <pubTime>2018-09-02T00:00:00.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>Dynamic Proxy</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://www.ziazhou.com/readings/%E6%8A%80%E6%9C%AF%E8%84%91%E5%9B%BE%E6%95%B4%E7%90%86/</loc>
@@ -230,9 +250,9 @@
         <title>记一次异常数据过滤算法的优化</title>
         <pubTime>2017-07-13T00:00:00.000Z</pubTime>
         
-        <tag>Optimization</tag>
-         
         <tag>Algorithm</tag>
+         
+        <tag>Optimization</tag>
          
          
            

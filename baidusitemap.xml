@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.ziazhou.com/crawler/%E5%81%9A%E4%B8%80%E5%8F%AA%E7%88%AC%E8%99%AB%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84/</loc>
-    <lastmod>2019-04-11T13:47:02.000Z</lastmod>
+    <lastmod>2019-04-25T03:21:25.000Z</lastmod>
     <data>
         <display>
         <title>做一只爬虫需要考虑的</title>
@@ -17,6 +17,26 @@
            
              
               <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.ziazhou.com/thoughts/%E7%9B%AE%E6%A0%87%E9%81%90%E6%83%B3/</loc>
+    <lastmod>2019-04-23T15:26:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>目标遐想</title>
+        <pubTime>2017-05-14T00:00:00.000Z</pubTime>
+        
+        <tag>目标</tag>
+         
+         
+           
+             
+              <breadCrumb title="思想" url="http://www.ziazhou.com/categories/%E6%80%9D%E6%83%B3/"/>
           
         </display>
     </data>
@@ -250,34 +270,14 @@
         <title>记一次异常数据过滤算法的优化</title>
         <pubTime>2017-07-13T00:00:00.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
         <tag>Optimization</tag>
+         
+        <tag>Algorithm</tag>
          
          
            
              
               <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.ziazhou.com/thoughts/%E7%9B%AE%E6%A0%87%E9%81%90%E6%83%B3/</loc>
-    <lastmod>2018-03-21T11:47:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>目标遐想</title>
-        <pubTime>2017-05-14T00:00:00.000Z</pubTime>
-        
-        <tag>目标</tag>
-         
-         
-           
-             
-              <breadCrumb title="思想" url="http://www.ziazhou.com/categories/%E6%80%9D%E6%83%B3/"/>
           
         </display>
     </data>

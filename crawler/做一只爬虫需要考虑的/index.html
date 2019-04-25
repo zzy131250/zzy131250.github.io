@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="前言整理一下做一只可靠的爬虫需要考虑的因素。一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，为了应对服务端的反爬虫策略，还需要考虑反反爬虫策略。 网络解析存储反反爬虫策略多线程数据采集方式数据解析数据存储 cookieagent代理sleep 参考资料">
+<meta name="description" content="前言整理一下做一只可靠的爬虫需要考虑的因素。一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，爬虫还需要应对服务端的反爬虫策略。 网络爬虫需要网络访问，网络下载速度越快，那么爬取效率会越高。当然，一般情况下，由于网站的反爬虫策略，爬虫对于网络的要求并不是很高，带宽不需要很大。因为，通常情况下反爬虫策略不">
 <meta name="keywords" content="Crawler">
 <meta property="og:type" content="article">
 <meta property="og:title" content="做一只爬虫需要考虑的">
 <meta property="og:url" content="http://www.ziazhou.com/crawler/做一只爬虫需要考虑的/index.html">
 <meta property="og:site_name" content="Zia's Blog">
-<meta property="og:description" content="前言整理一下做一只可靠的爬虫需要考虑的因素。一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，为了应对服务端的反爬虫策略，还需要考虑反反爬虫策略。 网络解析存储反反爬虫策略多线程数据采集方式数据解析数据存储 cookieagent代理sleep 参考资料">
-<meta property="og:updated_time" content="2019-04-11T13:47:02.000Z">
+<meta property="og:description" content="前言整理一下做一只可靠的爬虫需要考虑的因素。一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，爬虫还需要应对服务端的反爬虫策略。 网络爬虫需要网络访问，网络下载速度越快，那么爬取效率会越高。当然，一般情况下，由于网站的反爬虫策略，爬虫对于网络的要求并不是很高，带宽不需要很大。因为，通常情况下反爬虫策略不">
+<meta property="og:updated_time" content="2019-04-25T03:21:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="做一只爬虫需要考虑的">
-<meta name="twitter:description" content="前言整理一下做一只可靠的爬虫需要考虑的因素。一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，为了应对服务端的反爬虫策略，还需要考虑反反爬虫策略。 网络解析存储反反爬虫策略多线程数据采集方式数据解析数据存储 cookieagent代理sleep 参考资料">
+<meta name="twitter:description" content="前言整理一下做一只可靠的爬虫需要考虑的因素。一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，爬虫还需要应对服务端的反爬虫策略。 网络爬虫需要网络访问，网络下载速度越快，那么爬取效率会越高。当然，一般情况下，由于网站的反爬虫策略，爬虫对于网络的要求并不是很高，带宽不需要很大。因为，通常情况下反爬虫策略不">
 
 
 
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  143
+                  701
                 </span>
               
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -400,10 +400,17 @@
 
       
         <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>整理一下做一只可靠的爬虫需要考虑的因素。<br>一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，为了应对服务端的反爬虫策略，还需要考虑反反爬虫策略。</p>
-<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><h1 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h1><h1 id="反反爬虫策略"><a href="#反反爬虫策略" class="headerlink" title="反反爬虫策略"></a>反反爬虫策略</h1><p>多线程<br>数据采集方式<br>数据解析<br>数据存储</p>
-<p>cookie<br>agent<br>代理<br>sleep</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>整理一下做一只可靠的爬虫需要考虑的因素。<br>一次典型的爬取过程包括下载一个 URL 返回的页面，解析页面中的目标数据，将数据存储起来。那么，可以从网络、解析、存储三个方面来讨论分析。另外，爬虫还需要应对服务端的反爬虫策略。</p>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><p>爬虫需要网络访问，网络下载速度越快，那么爬取效率会越高。当然，一般情况下，由于网站的反爬虫策略，爬虫对于网络的要求并不是很高，带宽不需要很大。因为，通常情况下反爬虫策略不允许短时间内的大量访问。<br>当然，对于客户端而言，最佳实践当然是使用单独的线程或进程进行异步的网络访问，因为 IO 操作相对于 CPU 来说相当耗时。</p>
+<h1 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h1><p>网页的解析，就是从网页中提取需要的数据。主要的解析方式包括正则、Xpath、CSS 选择器等。对于爬虫来说，解析出需要的数据即可，根据不同的网页，可以挑选不同的方式。</p>
+<h1 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h1><p>数据存储主要可分为文件和数据库，如果爬虫爬取的数据量不是很大，那么可以使用文件进行简单存储。而如果数据量达到一定规模，则优先考虑数据库。<br>数据库又分为关系型数据库，如 MySQL，和非关系型数据库，如 MongoDB。如何选择，则主要看使用场景，两者的对比可参考：<a href="https://www.mongodb.com/compare/mongodb-mysql" target="_blank" rel="external">MongoDB and MySQL Compared</a>。</p>
+<h1 id="反爬虫策略应对"><a href="#反爬虫策略应对" class="headerlink" title="反爬虫策略应对"></a>反爬虫策略应对</h1><h2 id="UA-识别"><a href="#UA-识别" class="headerlink" title="UA 识别"></a>UA 识别</h2><p>对于通过 User-Agent 识别爬虫的策略，可以伪造 UA，并使用 UA 池，随机切换。另外可以伪装成浏览器爬虫，使用特定的 UA 爬取数据。</p>
+<h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h2><p>对于图片验证码，可以考虑使用 OCR 识别；对于滑块之类的验证手段，可以考虑 Selenium 模拟滑动。验证码是比较难以破解的反爬虫手段，目前也没有完美的方式。</p>
+<h2 id="频率限制"><a href="#频率限制" class="headerlink" title="频率限制"></a>频率限制</h2><p>对于服务端的访问频率限制，可以随机 sleep 一段时间再爬取。</p>
+<h2 id="动态网页"><a href="#动态网页" class="headerlink" title="动态网页"></a>动态网页</h2><p>对于动态网页，可以使用两种方式。<br>一是直接找到 Ajax 请求的 URL，进行爬取；二是通过 Selenium + 模拟浏览器，首先渲染出页面，再进行爬取。</p>
+<h2 id="IP-封锁"><a href="#IP-封锁" class="headerlink" title="IP 封锁"></a>IP 封锁</h2><p>对于 IP 封锁，可使用 IP 代理池，随机切换 IP 爬取数据。</p>
+<h2 id="Cookie-验证"><a href="#Cookie-验证" class="headerlink" title="Cookie 验证"></a>Cookie 验证</h2><p>对于需要登录验证的网站，可以先使用网页登录，然后拿到 Cookie，进行爬取。或者使用 Selenium + 模拟浏览器直接登录，然后爬取数据。</p>
+<hr>
 
       
     </div>
@@ -677,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">2.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解析"><span class="nav-number">3.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储"><span class="nav-number">4.</span> <span class="nav-text">存储</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反反爬虫策略"><span class="nav-number">5.</span> <span class="nav-text">反反爬虫策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">2.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解析"><span class="nav-number">3.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储"><span class="nav-number">4.</span> <span class="nav-text">存储</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反爬虫策略应对"><span class="nav-number">5.</span> <span class="nav-text">反爬虫策略应对</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UA-识别"><span class="nav-number">5.1.</span> <span class="nav-text">UA 识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码"><span class="nav-number">5.2.</span> <span class="nav-text">验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#频率限制"><span class="nav-number">5.3.</span> <span class="nav-text">频率限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态网页"><span class="nav-number">5.4.</span> <span class="nav-text">动态网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-封锁"><span class="nav-number">5.5.</span> <span class="nav-text">IP 封锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie-验证"><span class="nav-number">5.6.</span> <span class="nav-text">Cookie 验证</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python,Library," />
+  <meta name="keywords" content="Network,Iptables," />
 
 
 
@@ -87,17 +87,22 @@
 
 
 
-<meta name="description" content="前言工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。 requests易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。使用手册 beautifulsoup好用的HTML解析工具。使用手册 dateutil日期处理工具，令人激动的是，它的parse函数可以自动识别多">
-<meta name="keywords" content="Python,Library">
+<meta name="description" content="概述Iptables是一个配置Linux内核防火墙的命令行工具，是Netfilter项目的一部分。Iptables通过封包过滤的方式检测、修改、转发或丢弃IPv4数据包，过滤的方式则采用一系列默认和用户定义的规则。如果匹配到规则，则执行该规则的动作。注意，Iptables的规则是有顺序的，只会执行第一个匹配规则的动作。  概念介绍表（Table）Iptables里面有多个表（Table），每个表">
+<meta name="keywords" content="Network,Iptables">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python库推荐">
-<meta property="og:url" content="http://www.ziazhou.com/python/Python库推荐/index.html">
+<meta property="og:title" content="Iptables学习实践">
+<meta property="og:url" content="http://www.ziazhou.com/network/Iptables学习实践/index.html">
 <meta property="og:site_name" content="Zia's Blog">
-<meta property="og:description" content="前言工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。 requests易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。使用手册 beautifulsoup好用的HTML解析工具。使用手册 dateutil日期处理工具，令人激动的是，它的parse函数可以自动识别多">
-<meta property="og:updated_time" content="2018-03-21T11:46:18.000Z">
+<meta property="og:description" content="概述Iptables是一个配置Linux内核防火墙的命令行工具，是Netfilter项目的一部分。Iptables通过封包过滤的方式检测、修改、转发或丢弃IPv4数据包，过滤的方式则采用一系列默认和用户定义的规则。如果匹配到规则，则执行该规则的动作。注意，Iptables的规则是有顺序的，只会执行第一个匹配规则的动作。  概念介绍表（Table）Iptables里面有多个表（Table），每个表">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/80619953.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/18949521.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/46723210.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/27381405.jpg">
+<meta property="og:updated_time" content="2019-06-14T09:01:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python库推荐">
-<meta name="twitter:description" content="前言工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。 requests易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。使用手册 beautifulsoup好用的HTML解析工具。使用手册 dateutil日期处理工具，令人激动的是，它的parse函数可以自动识别多">
+<meta name="twitter:title" content="Iptables学习实践">
+<meta name="twitter:description" content="概述Iptables是一个配置Linux内核防火墙的命令行工具，是Netfilter项目的一部分。Iptables通过封包过滤的方式检测、修改、转发或丢弃IPv4数据包，过滤的方式则采用一系列默认和用户定义的规则。如果匹配到规则，则执行该规则的动作。注意，Iptables的规则是有顺序的，只会执行第一个匹配规则的动作。  概念介绍表（Table）Iptables里面有多个表（Table），每个表">
+<meta name="twitter:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/80619953.jpg">
 
 
 
@@ -125,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://www.ziazhou.com/python/Python库推荐/"/>
+  <link rel="canonical" href="http://www.ziazhou.com/network/Iptables学习实践/"/>
 
 
 
 
 
-  <title> Python库推荐 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Iptables学习实践 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.ziazhou.com/python/Python库推荐/">
+    <link itemprop="mainEntityOfPage" href="http://www.ziazhou.com/network/Iptables学习实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zia Zhou">
@@ -291,7 +296,7 @@
             
             
               
-                Python库推荐
+                Iptables学习实践
               
             
           </h2>
@@ -306,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+00:00">
-                2017-07-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-12T00:00:00+00:00">
+                2019-06-12
               </time>
             
 
@@ -364,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  221
+                  1,081
                 </span>
               
 
@@ -380,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -400,12 +405,34 @@
 
       
         <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善其事，必先利其器。Python作为强大的脚本语言，其很大的优势就在于众多优秀的库。这里推荐一些个人觉得很好用的库，本文持续更新。</p>
-<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a><a href="https://pypi.python.org/pypi/requests" target="_blank" rel="external">requests</a></h1><p>易用的HTTP库。”Python HTTP for Humans.”这是requests的口号。<br><a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="external">使用手册</a></p>
-<h1 id="beautifulsoup"><a href="#beautifulsoup" class="headerlink" title="beautifulsoup"></a><a href="https://pypi.python.org/pypi/BeautifulSoup" target="_blank" rel="external">beautifulsoup</a></h1><p>好用的HTML解析工具。<br><a href="http://beautifulsoup.readthedocs.io/zh_CN/latest/" target="_blank" rel="external">使用手册</a></p>
-<h1 id="dateutil"><a href="#dateutil" class="headerlink" title="dateutil"></a><a href="https://pypi.python.org/pypi/python-dateutil" target="_blank" rel="external">dateutil</a></h1><p>日期处理工具，令人激动的是，它的parse函数可以自动识别多种字符串，如”2017-01-01”、”01/01/2017”、”2017.01.01”，并直接转成datetime，很方便！另外，它还提供rrule函数，用于根据指定条件生成日期序列。<br><a href="http://dateutil.readthedocs.io/en/latest/" target="_blank" rel="external">使用手册</a></p>
-<h1 id="profile-built-in"><a href="#profile-built-in" class="headerlink" title="profile(built-in)"></a>profile(built-in)</h1><p>这是Python的一个内建函数，可以用于进行性能分析。</p>
-<h1 id="pyenv"><a href="#pyenv" class="headerlink" title="pyenv"></a><a href="https://pypi.python.org/pypi/pyenv/" target="_blank" rel="external">pyenv</a></h1><p>Linux下的Python版本管理神器！简单好用，可以指定某个目录使用的Python版本。<br><a href="https://github.com/pyenv/pyenv/wiki" target="_blank" rel="external">使用手册</a></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Iptables是一个配置Linux内核防火墙的命令行工具，是Netfilter项目的一部分。Iptables通过封包过滤的方式检测、修改、转发或丢弃IPv4数据包，过滤的方式则采用一系列默认和用户定义的规则。如果匹配到规则，则执行该规则的动作。注意，Iptables的规则是<strong>有顺序</strong>的，只会执行第一个匹配规则的动作。</p>
+<p><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/80619953.jpg" alt=""></p>
+<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="表（Table）"><a href="#表（Table）" class="headerlink" title="表（Table）"></a>表（Table）</h2><p>Iptables里面有多个表（Table），每个表都定义出自己的默认策略与规则，且每个表格的用途都不相同。<br>Iptables主要包含的表：</p>
+<ul>
+<li>raw表：用于配置数据包，其中的数据包不会被系统跟踪</li>
+<li>filter表：存放所有与防火墙相关操作的默认表</li>
+<li>nat表：用于网络地址转换（来源、目的IP、port的转换）</li>
+<li>mangle表：用于对特殊封包的修改</li>
+</ul>
+<p><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/18949521.jpg" alt=""></p>
+<h2 id="链（Chain）"><a href="#链（Chain）" class="headerlink" title="链（Chain）"></a>链（Chain）</h2><p>Iptables主要包含的链：</p>
+<ul>
+<li>INPUT链：作用于想要进入本机的封包</li>
+<li>OUTPUT链：作用于本机要发送的封包</li>
+<li>FORWARD链：作用于要转发的封包</li>
+<li>PREROUTING链：作用于路由判断之前</li>
+<li>POSTROUTING链：作用于路由判断之后</li>
+</ul>
+<p>Iptables封包过滤过程（表与链的生效时机）如下图：</p>
+<p><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/46723210.jpg" alt=""></p>
+<h2 id="规则（Rule）"><a href="#规则（Rule）" class="headerlink" title="规则（Rule）"></a>规则（Rule）</h2><p>位于Iptables上的一系列匹配规则，这些规则包括匹配条件与执行目标（跳转到链、内置目标ACCEPT，DROP，QUEUE和RETURN、扩展目标REJECT和LOG）。<br>执行目标跳转到链之后，如果目标链的规则不能提供完全匹配，则会返回到调用链。</p>
+<p><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/19-6-12/27381405.jpg" alt=""></p>
+<h2 id="模块（Module）"><a href="#模块（Module）" class="headerlink" title="模块（Module）"></a>模块（Module）</h2><p>模块可以用来扩展Iptables，如conntrack链接跟踪等。</p>
+<h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><p>本实践通过配置Iptables规则达到Docker端口映射的目的。实践的机器为CentOS 7.6虚拟机，预先安装了Iptables和Docker。<br>Iptables规则可通过<em>iptables -S -t [table]</em>命令查看，最初的Iptables规则列表如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">*nat</div><div class="line">-P PREROUTING ACCEPT</div><div class="line">-P INPUT ACCEPT</div><div class="line">-P OUTPUT ACCEPT</div><div class="line">-P POSTROUTING ACCEPT</div><div class="line">-N DOCKER</div><div class="line">-A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER</div><div class="line">-A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER</div><div class="line">-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE</div><div class="line">-A DOCKER -i docker0 -j RETURN</div><div class="line">*filter</div><div class="line">-P INPUT ACCEPT</div><div class="line">-P FORWARD DROP</div><div class="line">-P OUTPUT ACCEPT</div><div class="line">-N DOCKER</div><div class="line">-N DOCKER-ISOLATION-STAGE-1</div><div class="line">-N DOCKER-ISOLATION-STAGE-2</div><div class="line">-N DOCKER-USER</div><div class="line">-A FORWARD -j DOCKER-USER</div><div class="line">-A FORWARD -j DOCKER-ISOLATION-STAGE-1</div><div class="line">-A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT</div><div class="line">-A FORWARD -o docker0 -j DOCKER</div><div class="line">-A FORWARD -i docker0 ! -o docker0 -j ACCEPT</div><div class="line">-A FORWARD -i docker0 -o docker0 -j ACCEPT</div><div class="line">-A DOCKER-ISOLATION-STAGE-1 -i docker0 ! -o docker0 -j DOCKER-ISOLATION-STAGE-2</div><div class="line">-A DOCKER-ISOLATION-STAGE-1 -j RETURN</div><div class="line">-A DOCKER-ISOLATION-STAGE-2 -o docker0 -j DROP</div><div class="line">-A DOCKER-ISOLATION-STAGE-2 -j RETURN</div><div class="line">-A DOCKER-USER -j RETURN</div></pre></td></tr></table></figure></p>
+<p>通过<em>docker run -p 8080:8080</em>命令，我们添加了端口映射。现在，我们可以直接通过<em>curl <a href="http://10.0.2.15:8080" target="_blank" rel="external">http://10.0.2.15:8080</a></em>命令访问容器中的服务。其中，10.0.2.15是CentOS宿主机的IP。查看Iptables，规则列表变为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">*nat</div><div class="line">-P PREROUTING ACCEPT</div><div class="line">-P INPUT ACCEPT</div><div class="line">-P OUTPUT ACCEPT</div><div class="line">-P POSTROUTING ACCEPT</div><div class="line">-N DOCKER</div><div class="line">-A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER</div><div class="line">-A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER</div><div class="line">-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE</div><div class="line">-A POSTROUTING -s 172.17.0.2/32 -d 172.17.0.2/32 -p tcp -m tcp --dport 8080 -j MASQUERADE</div><div class="line">-A DOCKER -i docker0 -j RETURN</div><div class="line">-A DOCKER ! -i docker0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 172.17.0.2:8080</div><div class="line">*filter</div><div class="line">-P INPUT ACCEPT</div><div class="line">-P FORWARD DROP</div><div class="line">-P OUTPUT ACCEPT</div><div class="line">-N DOCKER</div><div class="line">-N DOCKER-ISOLATION-STAGE-1</div><div class="line">-N DOCKER-ISOLATION-STAGE-2</div><div class="line">-N DOCKER-USER</div><div class="line">-A FORWARD -j DOCKER-USER</div><div class="line">-A FORWARD -j DOCKER-ISOLATION-STAGE-1</div><div class="line">-A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT</div><div class="line">-A FORWARD -o docker0 -j DOCKER</div><div class="line">-A FORWARD -i docker0 ! -o docker0 -j ACCEPT</div><div class="line">-A FORWARD -i docker0 -o docker0 -j ACCEPT</div><div class="line">-A DOCKER -d 172.17.0.2/32 ! -i docker0 -o docker0 -p tcp -m tcp --dport 8080 -j ACCEPT</div><div class="line">-A DOCKER-ISOLATION-STAGE-1 -i docker0 ! -o docker0 -j DOCKER-ISOLATION-STAGE-2</div><div class="line">-A DOCKER-ISOLATION-STAGE-1 -j RETURN</div><div class="line">-A DOCKER-ISOLATION-STAGE-2 -o docker0 -j DROP</div><div class="line">-A DOCKER-ISOLATION-STAGE-2 -j RETURN</div><div class="line">-A DOCKER-USER -j RETURN</div></pre></td></tr></table></figure></p>
+<p>我们发现多了三条规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">*nat</div><div class="line">-A POSTROUTING -s 172.17.0.2/32 -d 172.17.0.2/32 -p tcp -m tcp --dport 8080 -j MASQUERADE</div><div class="line">-A DOCKER ! -i docker0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 172.17.0.2:8080</div><div class="line">*filter</div><div class="line">-A DOCKER -d 172.17.0.2/32 ! -i docker0 -o docker0 -p tcp -m tcp --dport 8080 -j ACCEPT</div></pre></td></tr></table></figure></p>
+<p>下面我们依次手动添加Iptables规则。最后，通过访问10.0.2.15，我们成功访问到了容器中的服务，说明端口映射成功。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://cn.linux.vbird.org/linux_server/0250simple_firewall.php" target="_blank" rel="external">鸟哥的Linux私房菜</a><br><a href="https://wiki.archlinux.org/index.php/Iptables" target="_blank" rel="external">Iptables</a></p>
 <hr>
 
       
@@ -456,7 +483,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://www.ziazhou.com/python/Python库推荐/" title="Python库推荐">http://www.ziazhou.com/python/Python库推荐/</a>
+      <a href="http://www.ziazhou.com/network/Iptables学习实践/" title="Iptables学习实践">http://www.ziazhou.com/network/Iptables学习实践/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -472,9 +499,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/Network/" rel="tag"># Network</a>
           
-            <a href="/tags/Library/" rel="tag"># Library</a>
+            <a href="/tags/Iptables/" rel="tag"># Iptables</a>
           
         </div>
       
@@ -487,18 +514,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/布隆过滤器/" rel="next" title="布隆过滤器">
-                <i class="fa fa-chevron-left"></i> 布隆过滤器
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/os/IO复用/" rel="prev" title="IO复用">
-                IO复用 <i class="fa fa-chevron-right"></i>
+              <a href="/crawler/做一只爬虫需要考虑的/" rel="prev" title="做一只爬虫需要考虑的">
+                做一只爬虫需要考虑的 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -686,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#requests"><span class="nav-number">2.</span> <span class="nav-text">requests</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#beautifulsoup"><span class="nav-number">3.</span> <span class="nav-text">beautifulsoup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dateutil"><span class="nav-number">4.</span> <span class="nav-text">dateutil</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#profile-built-in"><span class="nav-number">5.</span> <span class="nav-text">profile(built-in)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyenv"><span class="nav-number">6.</span> <span class="nav-text">pyenv</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念介绍"><span class="nav-number">2.</span> <span class="nav-text">概念介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表（Table）"><span class="nav-number">2.1.</span> <span class="nav-text">表（Table）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链（Chain）"><span class="nav-number">2.2.</span> <span class="nav-text">链（Chain）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#规则（Rule）"><span class="nav-number">2.3.</span> <span class="nav-text">规则（Rule）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块（Module）"><span class="nav-number">2.4.</span> <span class="nav-text">模块（Module）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践"><span class="nav-number">3.</span> <span class="nav-text">实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

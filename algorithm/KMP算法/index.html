@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Algorithm,Hash," />
+  <meta name="keywords" content="Algorithm,String Match," />
 
 
 
@@ -87,19 +87,24 @@
 
 
 
-<meta name="description" content="前言在现实生活中，我们常会遇到需要判断某元素是否在一个集合中的问题。比如，网络爬虫需要判断一个网址是否已经被爬取过、或者需要检查某个邮件地址是否用于发送垃圾邮件。我们可以想到的方法可能是把他们保存起来，保存到数组、链表、树中，并由最优的搜索算法遍历。但随着数据个数的增长，搜索的代价逐渐升高（最好的情况是O(logn)），且空间占用会扩大。这时，我们想到哈希函数，通过把数据映射到哈希值，搜索速度提">
-<meta name="keywords" content="Algorithm,Hash">
+<meta name="description" content="前言在字符串匹配问题中，有很多经典算法。其中，KMP算法是单模字符串匹配的“终极”算法。KMP算法是根据三位作者（D.E. Knuth、J.H. Morris、V.R. Pratt）的名字来命名的，算法全称为 Knuth Morris Pratt 算法，简称KMP算法。 问题简述单模字符串匹配，指的是一个字符串 $a$ 和一个字符串 $b$ 进行匹配，$a$ 的长度远大于 $b$，需要查找在 $">
+<meta name="keywords" content="Algorithm,String Match">
 <meta property="og:type" content="article">
-<meta property="og:title" content="布隆过滤器">
-<meta property="og:url" content="http://www.ziazhou.com/algorithm/布隆过滤器/index.html">
+<meta property="og:title" content="KMP算法">
+<meta property="og:url" content="http://www.ziazhou.com/algorithm/KMP算法/index.html">
 <meta property="og:site_name" content="Zia's Blog">
-<meta property="og:description" content="前言在现实生活中，我们常会遇到需要判断某元素是否在一个集合中的问题。比如，网络爬虫需要判断一个网址是否已经被爬取过、或者需要检查某个邮件地址是否用于发送垃圾邮件。我们可以想到的方法可能是把他们保存起来，保存到数组、链表、树中，并由最优的搜索算法遍历。但随着数据个数的增长，搜索的代价逐渐升高（最好的情况是O(logn)），且空间占用会扩大。这时，我们想到哈希函数，通过把数据映射到哈希值，搜索速度提">
-<meta property="og:image" content="http://zia-blog.oss-cn-hangzhou.aliyuncs.com/18-10-27/81686166.jpg">
-<meta property="og:updated_time" content="2018-10-27T02:27:22.000Z">
+<meta property="og:description" content="前言在字符串匹配问题中，有很多经典算法。其中，KMP算法是单模字符串匹配的“终极”算法。KMP算法是根据三位作者（D.E. Knuth、J.H. Morris、V.R. Pratt）的名字来命名的，算法全称为 Knuth Morris Pratt 算法，简称KMP算法。 问题简述单模字符串匹配，指的是一个字符串 $a$ 和一个字符串 $b$ 进行匹配，$a$ 的长度远大于 $b$，需要查找在 $">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/22907275.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/33915450.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/28771402.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/55980394.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/37823869.jpg">
+<meta property="og:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/64924621.jpg">
+<meta property="og:updated_time" content="2020-03-08T12:51:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="布隆过滤器">
-<meta name="twitter:description" content="前言在现实生活中，我们常会遇到需要判断某元素是否在一个集合中的问题。比如，网络爬虫需要判断一个网址是否已经被爬取过、或者需要检查某个邮件地址是否用于发送垃圾邮件。我们可以想到的方法可能是把他们保存起来，保存到数组、链表、树中，并由最优的搜索算法遍历。但随着数据个数的增长，搜索的代价逐渐升高（最好的情况是O(logn)），且空间占用会扩大。这时，我们想到哈希函数，通过把数据映射到哈希值，搜索速度提">
-<meta name="twitter:image" content="http://zia-blog.oss-cn-hangzhou.aliyuncs.com/18-10-27/81686166.jpg">
+<meta name="twitter:title" content="KMP算法">
+<meta name="twitter:description" content="前言在字符串匹配问题中，有很多经典算法。其中，KMP算法是单模字符串匹配的“终极”算法。KMP算法是根据三位作者（D.E. Knuth、J.H. Morris、V.R. Pratt）的名字来命名的，算法全称为 Knuth Morris Pratt 算法，简称KMP算法。 问题简述单模字符串匹配，指的是一个字符串 $a$ 和一个字符串 $b$ 进行匹配，$a$ 的长度远大于 $b$，需要查找在 $">
+<meta name="twitter:image" content="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/22907275.jpg">
 
 
 
@@ -127,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://www.ziazhou.com/algorithm/布隆过滤器/"/>
+  <link rel="canonical" href="http://www.ziazhou.com/algorithm/KMP算法/"/>
 
 
 
 
 
-  <title> 布隆过滤器 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> KMP算法 | Zia's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +287,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.ziazhou.com/algorithm/布隆过滤器/">
+    <link itemprop="mainEntityOfPage" href="http://www.ziazhou.com/algorithm/KMP算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zia Zhou">
@@ -303,7 +308,7 @@
             
             
               
-                布隆过滤器
+                KMP算法
               
             
           </h2>
@@ -318,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T00:00:00+00:00">
-                2017-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-01T00:00:00+00:00">
+                2020-02-01
               </time>
             
 
@@ -376,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  881
+                  1,659
                 </span>
               
 
@@ -392,7 +397,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -412,10 +417,21 @@
 
       
         <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在现实生活中，我们常会遇到需要判断某元素是否在一个集合中的问题。比如，网络爬虫需要判断一个网址是否已经被爬取过、或者需要检查某个邮件地址是否用于发送垃圾邮件。<br>我们可以想到的方法可能是把他们保存起来，保存到数组、链表、树中，并由最优的搜索算法遍历。但随着数据个数的增长，搜索的代价逐渐升高（最好的情况是O(logn)），且空间占用会扩大。这时，我们想到哈希函数，通过把数据映射到哈希值，搜索速度提升（O(n/k)），而且数据可以得到压缩。那么，我们要问，如果数据个数再增长呢？哈希值存不下呢？这时，为了保证可用性，我们不得不牺牲掉一些准确性，这就是布隆过滤器的思想。</p>
-<h1 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h1><h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>布隆过滤器由布隆在1970年提出，它由一个很长的二进制数组和一系列哈希函数组成。通过在数组上记录每个元素的指纹，来记录需要过滤的元素的信息。<br>假设现在有3个元素需要加入过滤器，同时有3个哈希函数。我们先将过滤器初始化，即全部置0。然后对每个元素通过每个哈希函数求哈希值，并将这9个哈希值对应的数组上的点置1。全部操作完成后，布隆过滤器就完成了。<br><img src="http://zia-blog.oss-cn-hangzhou.aliyuncs.com/18-10-27/81686166.jpg" alt=""><br>在实际使用中，用哈希函数对需要判断的元素求哈希值，如果所求得的哈希值在数组对应位置上出现0，则可以确定该元素一定不是需要过滤的元素。但是，如果发现哈希值对应到数组上都为1，那么，该元素有一定概率是不需要被过滤的，这也是导致布隆过滤器误删的原因。</p>
-<h2 id="误差计算"><a href="#误差计算" class="headerlink" title="误差计算"></a>误差计算</h2><p>我们现在来计算一下布隆过滤器误删元素的概率。假设数组长度为m，哈希函数个数为h，需要过滤的元素个数为k。<br>我们先在过滤器中插入元素。一个元素在一个哈希函数作用下，造成数组中某位被置为1的概率为$ 1 \over m $，因而该位没有被置1的概率为：$$ 1 - {1 \over m} $$<br>则一个元素在所有哈希函数作用后，该位仍为0的概率为：$$ (1-{1 \over m })^h $$<br>接下来，把所有需要过滤的元素插入过滤器后，该位为0的概率变为：$$ (1-{1 \over m })^{hk} $$<br>因而在布隆过滤器完成时，某位被置为1的概率为：$$ 1-(1-{1 \over m })^{hk} $$<br>现在我们使用完成的布隆过滤器过滤元素。对于被检验的某个元素，得到它的哈希值对应数组位置都被置1的概率为：$$ [1-(1-{1 \over m })^{hk}]^k $$<br>即该元素被删掉的概率。<br>我们知道，在m很大时，$ (1-{1 \over m })^{hk} \approx e^{-hk / m} $，则原概率约等于：$$ (1-e^{-hk/m})^k $$<br>我们可以发现，被误删的概率随着数组长度（m）的增大而减小，随着需要过滤元素个数（k）的增大而增大。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://zh.wikipedia.org/wiki/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8" target="_blank" rel="external">布隆过滤器</a><br><a href="http://www.cnblogs.com/allensun/archive/2011/02/16/1956532.html" target="_blank" rel="external">布隆过滤器 (Bloom Filter) 详解</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在字符串匹配问题中，有很多经典算法。其中，KMP算法是单模字符串匹配的“终极”算法。<br>KMP算法是根据三位作者（D.E. Knuth、J.H. Morris、V.R. Pratt）的名字来命名的，算法全称为 Knuth Morris Pratt 算法，简称KMP算法。</p>
+<h1 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h1><p>单模字符串匹配，指的是一个字符串 $a$ 和一个字符串 $b$ 进行匹配，$a$ 的长度远大于 $b$，需要查找在 $a$ 中是否包含 $b$。其中 $a$ 称为主串，$b$ 称为模式串。</p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>我们能想到的最简单的办法，就是模式串在主串中滑动，从前往后依次查看有没有匹配的串。如下图：<br><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/22907275.jpg" alt=""><br>这种算法称为BF算法，或朴素匹配算法。算法的最坏时间复杂度为 $O(n*m)$，其中 $n$ 为主串长度，$m$ 为模式串长度。<br>下面，我们思考一个问题：在遇到不匹配的字符时，我们只是把模式串向后移动一位，是不是效率低了？有没有办法让模式串多向后移动几位？KMP算法，正是基于这个初衷，提出来的。</p>
+<h2 id="坏字符与好前缀"><a href="#坏字符与好前缀" class="headerlink" title="坏字符与好前缀"></a>坏字符与好前缀</h2><p>在介绍KMP算法之前，我们先介绍一些前置概念。<br>如下图，在主串和模式串匹配过程中，遇到的不能匹配的字符，我们称之为<strong>坏字符</strong>。相应的，我们把坏字符前，已经匹配的前缀子串称为<strong>好前缀</strong>。<br><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/33915450.jpg" alt=""></p>
+<h2 id="模式串滑动"><a href="#模式串滑动" class="headerlink" title="模式串滑动"></a>模式串滑动</h2><p>我们知道，当我们遇到坏字符时，意味着模式串需要向后滑动。那么，我们最多可以滑动多少位呢？<br>如下图，我们可以考察好前缀的后缀子串与模式串的前缀子串，找到好前缀的后缀子串中，最长的能够与模式串前缀子串匹配的串，然后进行滑动（可以思考下，为什么要求是最长子串？如果不是最长子串，有可能滑动位数过多，导致不能覆盖全部情况，导致漏匹配）。注意，由于此时模式串的前缀子串=好前缀的前缀子串，故我们可以换一种说法，即找到好前缀的后缀子串中，最长的能够与好前缀的前缀子串匹配的串，然后进行滑动。像图中的情况，我们就可以把模式串向后滑动2位。<br><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/28771402.jpg" alt=""><br>一般的，假设坏字符在主串中的位置为 $i$，在模式串中的位置为 $j$，好前缀的<em>最长可匹配前后缀子串</em>（字符串中，前缀子串与后缀子串的最长匹配串）长度为 $k$，那么，我们需要把模式串向后滑动 $j-k$ 位，并从模式串的 $k+1$ 位开始，继续进行匹配。如下图：<br><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/55980394.jpg" alt=""></p>
+<h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><p>我们发现，可以预先根据模式串，求得各前缀的<em>最长可匹配前后缀子串</em>，记录最长前缀子串的位置，存储在数组中，再和主串进行匹配，快速得到匹配结果。我们把这个数组定义为next数组，很多地方也把这个数组定义为失效函数。<br>数组的下标是每个前缀结尾字符的下标，数组的值为该前缀的<em>最长可匹配前后缀子串</em>中，前缀子串结尾字符的下标，相当于前缀子串长度 $k$ 减去1。下图为一个例子：<br><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/37823869.jpg" alt=""></p>
+<h3 id="next数组的求解"><a href="#next数组的求解" class="headerlink" title="next数组的求解"></a>next数组的求解</h3><p>next数组的求解，我们可以利用动态规划的思想。我们知道，对于动态规划，最重要的是找到状态和状态转移方程。在本例中，状态是数组中的值，即模式串每个前缀的<em>最长可匹配前后缀子串</em>中前缀子串的位置。对于状态转移方程，要求得模式串 $b$ 中，第 $i$ 个字符的next值，即 $next[i]$，我们可以先假设已经求得了 $next[0]…next[i-1]$，且 $next[i-1]=k-1$，即子串 $b[0, k-1]$ 是 $b[0, i-1]$ 的<em>最长可匹配前后缀子串</em>。下面，我们分类讨论：</p>
+<ol>
+<li>如果 $b[k]=b[i]$，即 $b[k-1]$ 的下一个字符等于 $b[i-1]$ 的下一个字符，那么，我们可以马上得出结论：$b[0, k]$ 即为 $b[0, i]$ 的<em>最长可匹配前后缀子串</em>，$next[i]=k$。<br><img src="https://zia-blog.oss-cn-hangzhou.aliyuncs.com/20-3-8/64924621.jpg" alt=""></li>
+<li>如果 $b[k]!=b[i]$，即 $b[k-1]$ 的下一个字符不等于 $b[i-1]$ 的下一个字符。则我们需要找到 $b[0， k-1]$ 的最长前缀子串 $b[0, l]$，且该串最后一个字符的下一个字符为 $b[i]$，即 $b[l+1]=b[i]$。这个时候，我们可得到 $next[i]=l+1$。<h1 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h1>我们先给出框架代码如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a,b分别是主串和模式串；n,m分別是主串和模式串的长度</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">kmp</span><span class="params">(<span class="keyword">char</span>[] a, <span class="keyword">int</span> n, <span class="keyword">char</span>[] b, <span class="keyword">int</span> m)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span>[] next = getNexts(b, m);</div><div class="line">	<span class="comment">// 模式串的索引位置</span></div><div class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">	<span class="comment">// i是主串的索引位置</span></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">		<span class="comment">// 找到坏字符，也就是a[i]和b[j]</span></div><div class="line">		<span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; a[i] != b[j]) &#123;</div><div class="line">			<span class="comment">// 找到最长可匹配前后缀子串长度k-1，并从k位开始继续匹配</span></div><div class="line">			j = next[j - <span class="number">1</span>] + <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// 主串与模式串匹配，模式串索引后移</span></div><div class="line">		<span class="keyword">if</span> (a[i] == b[j]) ++j;</div><div class="line">		<span class="comment">// 找到匹配的模式串了，返回主串中开始匹配的字符位置</span></div><div class="line">		<span class="keyword">if</span> (j == m) <span class="keyword">return</span> i - m + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>next数组的求解属于比较难理解的部分，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// b表示模式串，m表示模式串的长度</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] getNexts(<span class="keyword">char</span>[] b, <span class="keyword">int</span> m) &#123;</div><div class="line">	<span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[m];</div><div class="line">	next[<span class="number">0</span>] = -<span class="number">1</span>;</div><div class="line">	<span class="comment">// 最长可匹配前后缀子串中，前缀子串的下标</span></div><div class="line">	<span class="keyword">int</span> k = -<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++) &#123;</div><div class="line">		<span class="comment">// 情况2，b[k+1]!=b[i]，循环找b[0,k]的最长前缀子串，直到b[k+1]=b[i]或k=-1（不存在），next[i]=l+1</span></div><div class="line">		<span class="keyword">while</span> (k != -<span class="number">1</span> &amp;&amp; b[k + <span class="number">1</span>] != b[i]) &#123;</div><div class="line">			<span class="comment">// 每次都赋值为b[0,k]的最长前缀子串位置</span></div><div class="line">			k = next[k];</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// 情况1，b[k+1]=b[i]，next[i]=k+1</span></div><div class="line">		<span class="keyword">if</span> (b[k + <span class="number">1</span>] == b[i]) ++k;</div><div class="line">		next[i] = k;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> next;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由上述代码可知，KMP算法的时间复杂度为 $O(n+m)$，即两个串都遍历一遍即可；空间复杂度为 $O(m)$，需要申请一个和模式串长度一样的数组。其中 $n$ 为主串长度，$m$ 为模式串长度。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://blog.csdn.net/weixin_38073885/article/details/85345215" target="_blank" rel="external">字符串匹配1———单模式匹配（BF，RK，Sunday，BM，KMP）</a></p>
 <hr>
 
       
@@ -466,7 +482,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://www.ziazhou.com/algorithm/布隆过滤器/" title="布隆过滤器">http://www.ziazhou.com/algorithm/布隆过滤器/</a>
+      <a href="http://www.ziazhou.com/algorithm/KMP算法/" title="KMP算法">http://www.ziazhou.com/algorithm/KMP算法/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -484,7 +500,7 @@
           
             <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
           
-            <a href="/tags/Hash/" rel="tag"># Hash</a>
+            <a href="/tags/String-Match/" rel="tag"># String Match</a>
           
         </div>
       
@@ -497,18 +513,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/algorithm/记一次异常数据过滤算法的优化/" rel="next" title="记一次异常数据过滤算法的优化">
-                <i class="fa fa-chevron-left"></i> 记一次异常数据过滤算法的优化
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/python/Python库推荐/" rel="prev" title="Python库推荐">
-                Python库推荐 <i class="fa fa-chevron-right"></i>
+              <a href="/network/Iptables学习实践/" rel="prev" title="Iptables学习实践">
+                Iptables学习实践 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -696,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布隆过滤器"><span class="nav-number">2.</span> <span class="nav-text">布隆过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理介绍"><span class="nav-number">2.1.</span> <span class="nav-text">原理介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#误差计算"><span class="nav-number">2.2.</span> <span class="nav-text">误差计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题简述"><span class="nav-number">2.</span> <span class="nav-text">问题简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题分析"><span class="nav-number">3.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#坏字符与好前缀"><span class="nav-number">3.1.</span> <span class="nav-text">坏字符与好前缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式串滑动"><span class="nav-number">3.2.</span> <span class="nav-text">模式串滑动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next数组"><span class="nav-number">3.3.</span> <span class="nav-text">next数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next数组的求解"><span class="nav-number">3.3.1.</span> <span class="nav-text">next数组的求解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题解决"><span class="nav-number">4.</span> <span class="nav-text">问题解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

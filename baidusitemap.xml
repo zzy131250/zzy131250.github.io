@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://www.ziazhou.com/algorithm/KMP%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2020-03-08T12:51:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>KMP算法</title>
+        <pubTime>2020-02-01T00:00:00.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+        <tag>String Match</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://www.ziazhou.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.ziazhou.com/network/Iptables%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2019-06-16T08:03:17.000Z</lastmod>
+    <lastmod>2019-06-18T02:54:37.000Z</lastmod>
     <data>
         <display>
         <title>Iptables学习实践</title>
@@ -204,9 +226,9 @@
         <title>从最小二乘法到梯度下降法（二）</title>
         <pubTime>2017-07-28T00:00:00.000Z</pubTime>
         
-        <tag>Optimization</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>Optimization</tag>
          
          
            
@@ -358,9 +380,9 @@
         <title>从最小二乘法到梯度下降法（一）</title>
         <pubTime>2017-07-24T00:00:00.000Z</pubTime>
         
-        <tag>Optimization</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>Optimization</tag>
          
          
            
